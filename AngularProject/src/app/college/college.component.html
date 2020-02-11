@@ -1,0 +1,10 @@
+<!--
+<p>college works!</p>
+-->
+<div class="college">
+  <h3>College Component (Parent Component)</h3>
+  <input type="text" [(ngModel)]="parentToChildTextMessage"> <!--(keyup)="parentToChild($event)"-->
+  <app-students [studentMessage]="CollegeMessage" [parentToChildTextMessage]="parentToChildTextMessage"></app-students>
+</div>
+
+
