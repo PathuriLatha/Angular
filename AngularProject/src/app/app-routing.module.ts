@@ -8,17 +8,24 @@ import { StudentsComponent } from './college/students/students.component';
 import { DepartmentDetailComponent } from './department-detail/department-detail.component';
 import { DepartmentOverviewComponent } from './department-overview/department-overview.component';
 import { DepartmentContactComponent } from './department-contact/department-contact.component';
+import { PipeComponent } from './pipe/pipe.component';
+import { HomeComponent } from './home/home.component';
+import { SettingsComponent } from './settings/settings.component';
+import { SettingProfileComponent } from './setting-profile/setting-profile.component';
+import { SettingContactComponent } from './setting-contact/setting-contact.component';
 
 
 const routes: Routes = [
-  { path: '', component: DepartmentListComponent }, //default component
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent },
+  /* { path: 'departments', component: DepartmentListComponent, outlet: 'default' }, */
   { path: 'departments', component: DepartmentListComponent },
   {
     path: 'departments/:id',
     component: DepartmentDetailComponent,
     children: [
-      { path: 'overview', component: DepartmentOverviewComponent },
-      { path: 'contact', component: DepartmentContactComponent }
+      { path: 'dept-overview', component: DepartmentOverviewComponent },
+      { path: 'dept-contact', component: DepartmentContactComponent }
     ]
   },
   /* { path: 'departments/:name', component: DepartmentDetailComponent }, */
@@ -28,6 +35,15 @@ const routes: Routes = [
       { path: 'students', component: StudentsComponent }
     ]
   },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    children: [
+      { path: 'setting-profile', component: SettingProfileComponent },
+      { path: 'setting-contact', component: SettingContactComponent }
+    ]
+  },
+  { path: 'pipes', component: PipeComponent },
   { path: "**", component: PageNotFoundRoutingComponent }
 ];
 
@@ -44,5 +60,10 @@ export const routingComponents = [  DepartmentListComponent,
                                     DepartmentOverviewComponent,
                                     DepartmentContactComponent,
                                     CollegeComponent,
-                                    StudentsComponent
+                                    StudentsComponent,
+                                    PipeComponent,
+                                    HomeComponent,
+                                    SettingsComponent,
+                                    SettingProfileComponent,
+                                    SettingContactComponent,
                                  ];

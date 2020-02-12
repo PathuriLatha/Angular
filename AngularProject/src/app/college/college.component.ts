@@ -14,9 +14,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollegeComponent implements OnInit {
 
-  CollegeMessage = "Message from CollegeComponent";
+  CollegeMessage = "Message from CollegeComponent via @Input";
   parentTextMessage: string = '';
   parentToChildTextMessage: string = '';
+  childToParentViaOutput: string ;
+
+  employees = ["Latha", "Subhankari", "Akhilesh", "Gufran" ];
+  name: string;
+  childCurrentVal: string;
 
   constructor() { }
 
@@ -25,6 +30,20 @@ export class CollegeComponent implements OnInit {
 
   parentToChild(value){
     this.parentToChild = value;
+  }
+
+  receiveMessage(event){
+    this.childToParentViaOutput = event;
+  }
+
+  setName(emp: string){
+    this.name = emp;
+  }
+
+  GetOutputVal(selected: string){
+    if(selected){
+      this.childCurrentVal = "value received from child :: "+selected;
+    }
   }
 
 }

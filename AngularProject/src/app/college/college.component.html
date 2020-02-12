@@ -4,7 +4,21 @@
 <div class="college">
   <h3>College Component (Parent Component)</h3>
   <input type="text" [(ngModel)]="parentToChildTextMessage"> <!--(keyup)="parentToChild($event)"-->
-  <app-students [studentMessage]="CollegeMessage" [parentToChildTextMessage]="parentToChildTextMessage"></app-students>
+  <h4>{{childToParentViaOutput}}</h4>
+  <table border="1px">
+    <tr *ngFor="let emp of employees">
+      <td width="50%">
+        {{emp}}
+      </td>
+      <td width="50%">
+        <input type="button" value="send To Child" (click)="setName(emp)">
+      </td>
+    </tr>
+  </table>
+  <h4>{{childCurrentVal}}</h4>
+  <app-students [studentMessage]="CollegeMessage" [parentToChildTextMessage]="parentToChildTextMessage" (messageEvent)="receiveMessage($event)"
+                [childName]="name" (outputToParent)="GetOutputVal($event)">
+  </app-students>
 </div>
 
 

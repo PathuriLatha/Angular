@@ -38,10 +38,10 @@ export class DepartmentDetailComponent implements OnInit {
   }
 
   showOverView(){
-    this.router.navigate(['overview'], {relativeTo: this.route});
+    this.router.navigate(['dept-overview'], {relativeTo: this.route});
   }
   showContact(){
-    this.router.navigate(['contact'], {relativeTo: this.route});
+    this.router.navigate(['dept-contact'], {relativeTo: this.route});
   }
 
 }
