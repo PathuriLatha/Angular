@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingProfileComponent } from './setting-profile/setting-profile.component';
 import { SettingContactComponent } from './setting-contact/setting-contact.component';
+import { SettingProfileDetailsComponent } from './setting-profile-details/setting-profile-details.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
     component: SettingsComponent,
     children: [
       { path: 'setting-profile', component: SettingProfileComponent },
+      { path: 'setting-profile/:id', component: SettingProfileDetailsComponent },
       { path: 'setting-contact', component: SettingContactComponent }
     ]
   },
@@ -66,4 +68,5 @@ export const routingComponents = [  DepartmentListComponent,
                                     SettingsComponent,
                                     SettingProfileComponent,
                                     SettingContactComponent,
+                                    SettingProfileDetailsComponent
                                  ];

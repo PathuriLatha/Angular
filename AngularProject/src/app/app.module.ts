@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SettingProfileComponent } from './setting-profile/setting-profile.component';
 import { SettingContactComponent } from './setting-contact/setting-contact.component';
+import { SettingProfileDetailsComponent } from './setting-profile-details/setting-profile-details.component';
 
  */
 
@@ -37,9 +38,10 @@ import { SettingContactComponent } from './setting-contact/setting-contact.compo
     HomeComponent
     SettingsComponent,
     SettingProfileComponent,
-    SettingContactComponent, */
+    SettingContactComponent,
+    SettingProfileDetailsComponent */
     routingComponents,
-    DepartmentDetailComponent
+    DepartmentDetailComponent,
 
   ],
   imports: [

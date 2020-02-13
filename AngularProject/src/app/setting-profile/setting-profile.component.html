@@ -1,1 +1,6 @@
-<h5>Setting Profile Component</h5>
+<h4>Setting Profile Component</h4>
+<ul>
+  <li (click)="onProfileSelect(profile)" *ngFor="let profile of settingProfile">
+    <span>{{profile.id}}</span> {{profile.name}}
+  </li>
+</ul>
