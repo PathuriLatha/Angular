@@ -1,0 +1,44 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <div style="text-align:center">
+    <h1>Welcome to {{ title }}!</h1>
+  </div>
+  <div class="routing">
+    <h3>Routing and Navigation</h3>
+    <nav>
+      <button routerLink="/departments" routerLinkActive="active">Departments</button>&nbsp;&nbsp;
+      <button routerLink="/employees" routerLinkActive="active">Employees</button>&nbsp;&nbsp;
+      <button [routerLink]="['./college']" >Nested Components (College And Student)</button>&nbsp;&nbsp;
+      <button [routerLink]="['./pipes']">Built-in Pipes</button>
+      <!--<button><router-link>departments</router-link>Departments</button>-->
+    </nav>
+    <br>
+    <button (click)="settingClick()">Settings</button>
+  </div>
+
+  <!-- Routed view go here -->
+  <router-outlet></router-outlet>
+  <!--<router-outlet name='default'></router-outlet>-->
+  <!--<router-outlet name='left'></router-outlet>
+  <router-outlet name='right'></router-outlet>-->
+
+  <!--<div>
+    <app-college></app-college>
+  </div>-->
+
+  <!--<div>
+    <app-pipe></app-pipe>
+  </div>-->
+
+  <!--<div>
+    <router-outlet>
+      <app-home>
+        <a routerLink="about">About</a>
+        <router-outlet name="home"> </router-outlet>
+      </app-home>
+    </router-outlet>
+  </div>-->
+
+</div>
+
+

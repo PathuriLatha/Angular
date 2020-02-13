@@ -1,0 +1,13 @@
+<!--
+<p>students works!</p>
+-->
+<div class="students">
+  <h3>Student Component (Child Component)</h3>
+  <h4>{{studentMessage}}</h4>
+  <h5>This is coming input field from college component :: {{parentToChildTextMessage}}</h5>
+  <button (click)="sendMessage()">sendMessage</button>
+  <h4>The selected value from parent is :: {{childName}}<br></h4>
+  <button (click)="NotificationToParent(childName)">Send Value To Parent</button>
+</div>
+
+
