@@ -14,7 +14,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { SettingProfileComponent } from './setting-profile/setting-profile.component';
 import { SettingContactComponent } from './setting-contact/setting-contact.component';
 import { SettingProfileDetailsComponent } from './setting-profile-details/setting-profile-details.component';
-
+import { StudentListComponent } from './student-list/student-list.component';
+import { StudentViewComponent } from './student-view/student-view.component';
+import { StudentEditComponent } from './student-edit/student-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -36,6 +38,7 @@ const routes: Routes = [
       { path: 'students', component: StudentsComponent }
     ]
   },
+  { path: 'pipes', component: PipeComponent },
   {
     path: 'settings',
     component: SettingsComponent,
@@ -45,7 +48,14 @@ const routes: Routes = [
       { path: 'setting-contact', component: SettingContactComponent }
     ]
   },
-  { path: 'pipes', component: PipeComponent },
+  {
+    path: 'studentsList',
+    component: StudentListComponent,
+    children: [
+      { path: 'studentView/:id', component: StudentViewComponent },
+      { path: 'studentEdit/:id/:name', component: StudentEditComponent }
+    ]
+  },
   { path: "**", component: PageNotFoundRoutingComponent }
 ];
 
@@ -68,5 +78,8 @@ export const routingComponents = [  DepartmentListComponent,
                                     SettingsComponent,
                                     SettingProfileComponent,
                                     SettingContactComponent,
-                                    SettingProfileDetailsComponent
+                                    SettingProfileDetailsComponent,
+                                    StudentListComponent,
+                                    StudentViewComponent,
+                                    StudentEditComponent
                                  ];

@@ -1,0 +1,32 @@
+<h1>Student List Component</h1>
+<!--<ul>
+  <li *ngFor="let students of studentsList">
+    <span>{{students.id}}</span> {{students.name}}
+    <p>{{students.address.state}}</p>
+  </li>
+</ul>-->
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let students of studentsList">
+    <td>{{students.id}}</td>
+    <td>{{students.name}}</td>
+    <td>City: {{students.address.city}}<br>State: {{students.address.state}}-{{students.address.zipCode}}</td>
+    <td>
+      <!--<button [routerLink]="['./studentsView']">View</button>&nbsp;-->
+      <button (click)="studentView(students.id)">View</button>&nbsp;
+      <button (click)="studentEdit(students.id, students.name)">Edit</button>&nbsp;
+      <button (click)="studentInput(students)">update</button>
+    </td>
+  </tr>
+</table>
+
+<!--<app-student-update [studentUpdate]="stuInput"></app-student-update>-->
+
+<router-outlet></router-outlet>
+<!--<app-student-view></app-student-view>-->

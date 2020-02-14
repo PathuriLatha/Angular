@@ -15,4 +15,8 @@ export class AppComponent {
     //this.router.navigate([]);
     this.router.navigate(['settings']);
   }
+
+  studentsList(){
+    this.router.navigate(['studentsList']);
+  }
 }

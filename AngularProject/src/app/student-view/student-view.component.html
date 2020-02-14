@@ -1,0 +1,34 @@
+<div>
+  <h3>Student View Component</h3>
+  <p>You selected student with id = {{studentId}}</p>
+  <!--<table>
+    <tr *ngFor="let marks of studentsMarks">
+      <td *ngIf="marks.stuId = studentId">{{marks.Social}}</td>
+    </tr>
+  </table>-->
+
+  <!--<ul>
+    <ng-container *ngFor="let marks of studentsMarks">
+      <li *ngIf="marks.stuId == studentId">{{marks.Social}}</li>
+    </ng-container>
+  </ul>-->
+
+  <table>
+    <tr>
+      <th>StudentId</th>
+      <th colspan="4">Marks</th>
+    </tr>
+    <ng-container *ngFor="let marks of studentsMarks">
+      <tr *ngIf="marks.stuId === studentId">
+        <td>{{marks.stuId}}</td>
+        <td> English - {{marks.English}}</td>
+        <td> Maths - {{marks.Maths}}</td>
+        <td> Science - {{marks.Science}}</td>
+        <td> Social - {{marks.Social}}</td>
+      </tr>
+    </ng-container>
+  </table>
+
+
+  <router-outlet></router-outlet>
+</div>

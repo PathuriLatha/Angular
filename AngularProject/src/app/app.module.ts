@@ -6,6 +6,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DepartmentDetailComponent } from './department-detail/department-detail.component';
+import { StudentUpdateComponent } from './student-update/student-update.component';
 
 /*
 import { DepartmentListComponent } from './department-list/department-list.component';
@@ -21,6 +22,9 @@ import { SettingsComponent } from './settings/settings.component';
 import { SettingProfileComponent } from './setting-profile/setting-profile.component';
 import { SettingContactComponent } from './setting-contact/setting-contact.component';
 import { SettingProfileDetailsComponent } from './setting-profile-details/setting-profile-details.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { StudentViewComponent } from './student-view/student-view.component';
+import { StudentEditComponent } from './student-edit/student-edit.component';
 
  */
 
@@ -39,9 +43,13 @@ import { SettingProfileDetailsComponent } from './setting-profile-details/settin
     SettingsComponent,
     SettingProfileComponent,
     SettingContactComponent,
-    SettingProfileDetailsComponent */
+    SettingProfileDetailsComponent
+    StudentListComponent,
+    StudentViewComponent,
+    StudentEditComponent,*/
     routingComponents,
     DepartmentDetailComponent,
+    StudentUpdateComponent,
 
   ],
   imports: [

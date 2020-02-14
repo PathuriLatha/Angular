@@ -13,7 +13,9 @@
       <!--<button><router-link>departments</router-link>Departments</button>-->
     </nav>
     <br>
-    <button (click)="settingClick()">Settings</button>
+    <button (click)="settingClick()">Settings</button>&nbsp;&nbsp;
+
+    <button (click)="studentsList()">StudentsList</button>
   </div>
 
   <!-- Routed view go here -->
@@ -37,6 +39,10 @@
         <router-outlet name="home"> </router-outlet>
       </app-home>
     </router-outlet>
+  </div>-->
+
+  <!--<div>
+    <app-student-list></app-student-list>
   </div>-->
 
 </div>
