@@ -1,0 +1,35 @@
+<div class="studentSelect">
+  <h3>Student Select Component</h3>
+  <!--<h4>studentId :: {{studentSelect.id}}</h4>-->
+  <!--<table>
+    <tr>
+      <th>studentId</th>
+      <th>Name</th>
+      <th>Address</th>
+    </tr>
+    <tr>
+      <td>{{studentSelect.id}}</td>
+      <td>{{studentSelect.name}}</td>
+      <td>City: {{studentSelect.address.city}}<br> State: {{studentSelect.address.state}}-{{studentSelect.address.zipCode}}</td>
+    </tr>
+  </table>-->
+
+  <table>
+    <tr>
+      <th>StudentId</th>
+      <th>Name</th>
+      <th colspan="4">Marks</th>
+    </tr>
+    <ng-container *ngFor="let marks of studentsMarks">
+      <!--<tr *ngIf="marks.stuId === studentSelectId">-->
+      <tr *ngIf="marks.stuId === studentSelect.id">
+        <td>{{marks.stuId}}</td>
+        <td>{{studentSelect.name}}</td>
+        <td> English - {{marks.English}}</td>
+        <td> Maths - {{marks.Maths}}</td>
+        <td> Science - {{marks.Science}}</td>
+        <td> Social - {{marks.Social}}</td>
+      </tr>
+    </ng-container>
+  </table>
+</div>

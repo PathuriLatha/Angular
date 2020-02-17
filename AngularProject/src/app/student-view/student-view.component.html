@@ -1,6 +1,6 @@
-<div>
+<div class="studentView">
   <h3>Student View Component</h3>
-  <p>You selected student with id = {{studentId}}</p>
+  <!--<p>You selected student with id = {{studentId}}</p>-->
   <!--<table>
     <tr *ngFor="let marks of studentsMarks">
       <td *ngIf="marks.stuId = studentId">{{marks.Social}}</td>
@@ -29,6 +29,10 @@
     </ng-container>
   </table>
 
-
+  <div>
+    <h3>{{message}}</h3>
+    <h4></h4>
+    <button (click)="newMessage()">New Message</button>
+  </div>
   <router-outlet></router-outlet>
 </div>

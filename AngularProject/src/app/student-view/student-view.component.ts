@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { BehaviourSubjectService } from '../behaviour-subject.service';
 
 @Component({
   selector: 'app-student-view',
@@ -40,14 +41,25 @@ export class StudentViewComponent implements OnInit {
       "stuId": 1004
     }
   ];
+  message: string;
+  /* text: string = "Student View Component text"; */
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private behaviour: BehaviourSubjectService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       let id = parseInt(params.get('id'));
       this.studentId = id;
     });
+
+    this.behaviour.currentMessage.subscribe(msg => {
+      this.message = msg;
+    })
+  }
+
+  newMessage(){
+    /* this.behaviour.changeMessage(this.text); */
+    this.behaviour.changeMessage("new Message from Student View Component ")
   }
 
 }

@@ -2,3 +2,23 @@
 table, tr, th, td{
   border: 2px solid black;
 }
+.studentEdit, .studentList, .studentSelect, .studentUpdate, .studentView{
+  padding: 20px;
+  margin: 20px;
+}
+
+.studentList{
+  border: 2px solid red;
+}
+.studentSelect{
+  border: 2px dotted blue;
+}
+.studentUpdate{
+  border: 2px dotted blue;
+}
+.studentEdit{
+  border: 2px solid pink;
+}
+.studentView{
+  border: 2px solid aqua;
+}

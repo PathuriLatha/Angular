@@ -1,0 +1,17 @@
+<div class="studentUpdate">
+  <h3>Student Update Component</h3>
+
+  <!--<h5>From Student List Component {{studentUpdate.name}}</h5>-->
+  <table>
+    <tr>
+      <th>studentId</th>
+      <th>Name</th>
+      <th>Address</th>
+    </tr>
+    <tr>
+      <td>{{studentUpdate.id}}</td>
+      <td><input type="text" value="{{studentUpdate.name}}"></td>
+      <td><input type="text" value="City: {{studentUpdate.address.city}}, State: {{studentUpdate.address.state}}-{{studentUpdate.address.zipCode}}"></td>
+    </tr>
+  </table>
+</div>

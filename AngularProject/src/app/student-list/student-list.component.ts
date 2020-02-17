@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { BehaviourSubjectService } from '../behaviour-subject.service';
 
 @Component({
   selector: 'app-student-list',
@@ -49,16 +49,23 @@ export class StudentListComponent implements OnInit {
   ];
 
   /* studentEditing = {}; */
-  stuInput= { };
+  stuInput = { };
+  message: string;
+  /* stuSelectId : number; */
+  stuSelect = { };
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private behaviour: BehaviourSubjectService) { }
 
   ngOnInit() {
+    this.behaviour.currentMessage.subscribe(msg => {
+      this.message = msg;
+    })
   }
 
   studentView(stuId: number){
    // this.router.navigate(['studentsView']);
     /* this.router.navigate(['studentsList/studentsView', stuId]); */
+    console.log("studentView :: "+stuId);
     this.router.navigate(['studentsList/studentView', stuId]);
   }
 
@@ -67,9 +74,21 @@ export class StudentListComponent implements OnInit {
     this.router.navigate(['studentsList/studentEdit', studentId, studentName]);
   }
 
-  studentInput(obj){
+  studentUpdate(obj){
    // alert(this.stuInput);
+   /*  alert("from update :: "+obj);
+    console.log(obj); */
     this.stuInput = obj;
+  }
+
+/*   selectStudent(id: number){
+     *//* alert("from select :: "+obj);
+    console.log(obj); *//*
+    this.stuSelectId = id;
+  } */
+  selectStudent(obj){
+    // alert("from selectStudent :: "+obj);
+    this.stuSelect = obj;
   }
 
 }
