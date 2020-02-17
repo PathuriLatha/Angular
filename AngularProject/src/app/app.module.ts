@@ -7,6 +7,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DepartmentDetailComponent } from './department-detail/department-detail.component';
 import { StudentUpdateComponent } from './student-update/student-update.component';
+import { StudentSelectComponent } from './student-select/student-select.component';
 
 /*
 import { DepartmentListComponent } from './department-list/department-list.component';
@@ -50,6 +51,7 @@ import { StudentEditComponent } from './student-edit/student-edit.component';
     routingComponents,
     DepartmentDetailComponent,
     StudentUpdateComponent,
+    StudentSelectComponent,
 
   ],
   imports: [
