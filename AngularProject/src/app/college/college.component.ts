@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { StudentsComponent } from './students/students.component';
 
 @Component({
   selector: 'app-college',
@@ -12,7 +13,8 @@ import { Component, OnInit } from '@angular/core';
     }
   `]
 })
-export class CollegeComponent implements OnInit {
+/* export class CollegeComponent implements OnInit { */
+export class CollegeComponent implements AfterViewInit {
 
   CollegeMessage = "Message from CollegeComponent via @Input";
   parentTextMessage: string = '';
@@ -23,9 +25,17 @@ export class CollegeComponent implements OnInit {
   name: string;
   childCurrentVal: string;
 
+  @ViewChild(StudentsComponent, {static: true}) child;
+
+  viewChildMsgParent: string;
+
   constructor() { }
 
-  ngOnInit() {
+  /* ngOnInit() {
+  } */
+
+  ngAfterViewInit(){
+    this.viewChildMsgParent = this.child.viewChildMsgChild;
   }
 
   parentToChild(value){

@@ -17,6 +17,10 @@ import { SettingProfileDetailsComponent } from './setting-profile-details/settin
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentViewComponent } from './student-view/student-view.component';
 import { StudentEditComponent } from './student-edit/student-edit.component';
+import { StudentListServiceComponent } from './TaskUsingService/student-list-service/student-list-service.component';
+import { StudentMarksComponent } from './TaskUsingService/student-marks/student-marks.component';
+import { EditStudentComponent } from './TaskUsingService/edit-student/edit-student.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -56,6 +60,14 @@ const routes: Routes = [
       { path: 'studentEdit/:id/:name', component: StudentEditComponent }
     ]
   },
+  {
+    path: 'studentsListService',
+    component: StudentListServiceComponent,
+    children: [
+      { path: 'studentMarks/:id', component: StudentMarksComponent },
+      { path: 'edit/:id', component: EditStudentComponent }
+    ]
+  },
   { path: "**", component: PageNotFoundRoutingComponent }
 ];
 
@@ -81,5 +93,8 @@ export const routingComponents = [  DepartmentListComponent,
                                     SettingProfileDetailsComponent,
                                     StudentListComponent,
                                     StudentViewComponent,
-                                    StudentEditComponent
+                                    StudentEditComponent,
+                                    StudentListServiceComponent,
+                                    StudentMarksComponent,
+                                    EditStudentComponent,
                                  ];

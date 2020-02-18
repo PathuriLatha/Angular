@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { DepartmentDetailComponent } from './department-detail/department-detail.component';
 import { StudentUpdateComponent } from './student-update/student-update.component';
 import { StudentSelectComponent } from './student-select/student-select.component';
+import { StudentListService } from './student-list.service';
 
 /*
 import { DepartmentListComponent } from './department-list/department-list.component';
@@ -26,6 +27,9 @@ import { SettingProfileDetailsComponent } from './setting-profile-details/settin
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentViewComponent } from './student-view/student-view.component';
 import { StudentEditComponent } from './student-edit/student-edit.component';
+import { StudentListServiceComponent } from './TaskUsingService/student-list-service/student-list-service.component';
+import { StudentMarksComponent } from './TaskUsingService/student-marks/student-marks.component';
+import { EditStudentComponent } from './TaskUsingService/edit-student/edit-student.component';
 
  */
 
@@ -47,11 +51,15 @@ import { StudentEditComponent } from './student-edit/student-edit.component';
     SettingProfileDetailsComponent
     StudentListComponent,
     StudentViewComponent,
-    StudentEditComponent,*/
+    StudentEditComponent,
+    StudentListServiceComponent,
+    StudentMarksComponent,
+    EditStudentComponent,*/
     routingComponents,
     DepartmentDetailComponent,
     StudentUpdateComponent,
     StudentSelectComponent,
+
 
   ],
   imports: [
@@ -59,7 +67,7 @@ import { StudentEditComponent } from './student-edit/student-edit.component';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [StudentListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

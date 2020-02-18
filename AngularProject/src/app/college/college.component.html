@@ -16,6 +16,7 @@
     </tr>
   </table>
   <h4>{{childCurrentVal}}</h4>
+  <h4>{{viewChildMsgParent}}</h4>
   <app-students [studentMessage]="CollegeMessage" [parentToChildTextMessage]="parentToChildTextMessage" (messageEvent)="receiveMessage($event)"
                 [childName]="name" (outputToParent)="GetOutputVal($event)">
   </app-students>

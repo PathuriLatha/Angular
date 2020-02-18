@@ -22,6 +22,8 @@ export class StudentsComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
   @Output() outputToParent = new EventEmitter<string>();
   @Input() childName : string ;
+  viewChildMsgChild: string = "Student message via @ViewChild";
+
   constructor() { }
 
   ngOnInit() {

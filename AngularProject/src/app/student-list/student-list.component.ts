@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviourSubjectService } from '../behaviour-subject.service';
+// import { StudentListService } from '../student-list.service';
 
 @Component({
   selector: 'app-student-list',
@@ -53,13 +54,18 @@ export class StudentListComponent implements OnInit {
   message: string;
   /* stuSelectId : number; */
   stuSelect = { };
+  /* studentDetails = []; */
 
+  /* constructor(private router: Router, private behaviour: BehaviourSubjectService, private studentService: StudentListService) { } */
   constructor(private router: Router, private behaviour: BehaviourSubjectService) { }
 
   ngOnInit() {
+
     this.behaviour.currentMessage.subscribe(msg => {
       this.message = msg;
-    })
+    });
+
+    /* this.studentDetails = this.studentService.getStudentsList(); */
   }
 
   studentView(stuId: number){

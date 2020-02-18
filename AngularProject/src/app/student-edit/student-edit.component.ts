@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
-  selector: 'app-student-edit',
+  /* selector: 'app-student-edit', */
   templateUrl: './student-edit.component.html',
   styleUrls: ['./student-edit.component.css']
 })

@@ -19,4 +19,8 @@ export class AppComponent {
   studentsList(){
     this.router.navigate(['studentsList']);
   }
+
+  studentsListUsingService(){
+    this.router.navigate(['studentsListService']);
+  }
 }

@@ -1,0 +1,22 @@
+<div>
+  <h1>Student List Component</h1>
+  <h2>Fetching Student List Using Service</h2>
+  <table>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let stu of studentDetails">
+      <td>{{stu.id}}</td>
+      <td>{{stu.name}}</td>
+      <td>City: {{stu.address.city}}<br>State: {{stu.address.state}}-{{stu.address.zipCode}}</td>
+      <td>
+        <button (click)="studentMarks(stu.id)">View</button>&nbsp;
+        <button (click)="studentEdit(stu.id)">Edit</button>
+      </td>
+    </tr>
+  </table>
+  <router-outlet></router-outlet>
+</div>
