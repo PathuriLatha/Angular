@@ -11,11 +11,19 @@ import { StudentListService } from '../../student-list.service';
 export class StudentListServiceComponent implements OnInit {
 
   studentDetails = [];
+  /* let letNumber: number = 20; */
+  /* var varNumber = 20; */
+  /* var varNumber: number = 20; */
+  n: number = 20;
+  /* const name: string = "string using with const";
+  const check: string; */
+
 
   constructor(private router: Router, private studentService: StudentListService) { }
 
   ngOnInit() {
     this.studentDetails = this.studentService.getStudentsList();
+    /* console.log(this.check); */
   }
 
   studentMarks(stuId: number){

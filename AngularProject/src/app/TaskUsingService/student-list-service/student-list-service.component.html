@@ -1,22 +1,29 @@
 <div>
   <h1>Student List Component</h1>
   <h2>Fetching Student List Using Service</h2>
-  <table>
-    <tr>
+  <!--<h4>{{letNumber}}</h4>-->
+  <h4>{{n}}</h4>
+  <!--<h4>{{name}}</h4>-->
+  <!--<h4>{{varNumber}}</h4>-->
+  <table class="table">
+    <tr class="text-white text-center bg-primary">
       <th>Id</th>
       <th>Name</th>
       <th>Address</th>
       <th>Action</th>
     </tr>
-    <tr *ngFor="let stu of studentDetails">
+    <tr *ngFor="let stu of studentDetails" class="text-center">
       <td>{{stu.id}}</td>
       <td>{{stu.name}}</td>
       <td>City: {{stu.address.city}}<br>State: {{stu.address.state}}-{{stu.address.zipCode}}</td>
       <td>
-        <button (click)="studentMarks(stu.id)">View</button>&nbsp;
-        <button (click)="studentEdit(stu.id)">Edit</button>
+        <button class="btn btn-success" (click)="studentMarks(stu.id)">View</button>&nbsp;
+        <button class="btn btn-primary" (click)="studentEdit(stu.id)">Edit</button>
       </td>
     </tr>
   </table>
   <router-outlet></router-outlet>
 </div>
+ <!--sudo sed -i -e '/^assistive_technologies=/s/^/#'
+sudo sed -i -e '/^assistive_technologies=/s/^/#/' /etc/java-*-openjdk/accessibility.properties
+ -->

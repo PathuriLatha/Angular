@@ -1,12 +1,12 @@
 <div>
   <h3>Student Marks Component</h3>
-  <table>
-    <tr>
+  <table class="table">
+    <tr class="table text-center bg-info text-white">
       <th>StudentId</th>
       <th colspan="4">Marks</th>
     </tr>
     <ng-container *ngFor="let marks of studentMarks">
-      <tr *ngIf="marks.stuId === studentId">
+      <tr *ngIf="marks.stuId === studentId" class="text-center">
         <td>{{marks.stuId}}</td>
         <td> English - {{marks.English}}</td>
         <td> Maths - {{marks.Maths}}</td>

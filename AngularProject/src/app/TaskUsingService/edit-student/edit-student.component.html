@@ -1,13 +1,13 @@
 <div>
   <h3>Student Edit Component</h3>
-  <table>
-    <tr>
+  <table class="table">
+    <tr class="text-center text-white bg-success">
       <th>StudentId</th>
       <th>Name</th>
       <th colspan="2">Address</th>
     </tr>
     <ng-container *ngFor="let students of editStudentDetails">
-      <tr *ngIf="students.id === studentId">
+      <tr *ngIf="students.id === studentId" class="text-center">
         <td><input type="text" value="{{students.id}}"></td>
         <td><input type="text" value="{{students.name}}"></td>
         <td><input type="text" value="City : {{students.address.city}}"></td>
