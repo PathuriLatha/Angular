@@ -1,0 +1,35 @@
+<div>
+  <h1>Student Details component</h1>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let students of studentsList">
+          <td>{{students.id}}</td>
+          <td>{{students.name}}</td>
+          <td>City: {{students.address.city}}<br>State: {{students.address.state}}-{{students.address.zipCode}}</td>
+          <td>
+            <!--<button class="view" [routerLink]="['/studentList/view']" (click)="studentView(students.id)">View</button>&nbsp;-->
+            <button class="view" (click)="studentView(students.id)">View</button>&nbsp;
+            <!--<button class="edit" [routerLink]="['/studentList/edit', students.id, students.name]">edit</button>-->
+            <button class="edit" [routerLink]="['/edit', students.id, students.name]">edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-container *ngFor="let student of studentsList">
+    <div *ngIf="selectId === student.id" >
+      <app-student-view [marksArray]="sIdMarks"></app-student-view>
+    </div>
+  </ng-container>
+
+  <router-outlet></router-outlet>
+</div>

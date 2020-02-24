@@ -1,0 +1,258 @@
+/* Include CSS Normalize */
+$primary-color: #008cba;
+$gray-color: #ddd;
+$medium-up: 600px;
+$large-up: 1000px;
+$global-radius: 4px;
+$success-color: #009900;
+$danger-color: red;
+$pink-color: #FF007F;
+$blue-color: #000099;
+
+@mixin heading-font-regular {
+	font-family: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;;
+}
+
+h1{
+  text-align: center;
+  color: $primary-color;
+}
+h2{
+  text-align: center;
+  color: $danger-color;
+}
+h3{
+  text-align: center;
+  color: $success-color;
+}
+button.list, button.view, button.edit, button.back,{
+  padding: 15px 30px;
+  font-size: 13px;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  position: relative;
+}
+
+button.list{
+  background-color: $pink-color;
+  margin: auto;
+}
+
+button.view{
+  background-color: $primary-color;
+}
+
+button.edit{
+  background-color: $success-color;
+}
+
+button.back{
+  background-color: $blue-color;
+}
+
+///BASIC TABLE STYLING
+table {
+	border-collapse: collapse;
+	width: 100%;
+	float: left;
+  margin: 0 0 2em;
+
+	thead {
+		border: 3px solid $primary-color;
+		th {
+		  border: 2px solid $primary-color;
+			padding: 0.35em 0 .35em;
+      font-weight: 400;
+			text-align: center;
+			@include heading-font-regular;
+			font-size: 1.25em;
+		}
+	}
+
+	tbody {
+		border: 3px solid $primary-color;
+		tr {
+			border: 2px solid $primary-color;
+			td {
+        border: 2px solid $primary-color;
+				padding: .75em 0;
+        text-align: center;
+			}
+		}
+	}
+
+}
+
+
+
+///RWD MIXIN BELOW
+@mixin rwd-first {
+	display: block;
+
+  tbody {
+    border: none;
+  }
+
+  tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    float: left;
+    width: 100%;
+    margin: 0 0 1em;
+    border: 1px solid $gray-color;
+    box-shadow: 0px 2px 5px 0px $gray-color;
+    border-radius: $global-radius;
+    border-top: 5px solid $primary-color;
+
+    td {
+      padding: .5em .5em .5em 50%;
+      float:left;
+        width: 100%;
+      &:before {
+        width: 100%;
+        display: block;
+        float: left;
+        padding: .5em .5em .5em 0;
+        clear: both;
+        margin: -.5em 0 0 -100%;
+        @include heading-font-regular;
+        font-size: 1.125em;
+      }
+    }
+  }
+
+  tr:nth-of-type(even) {
+    //background: $gray-color;
+    td {
+
+      &:before {
+
+      }
+    }
+  }
+}
+
+@mixin rwd-second {
+	display: table;
+	border: none;
+
+  tbody {
+    border: 3px solid $primary-color;
+  }
+	th, td {
+		display: table-cell;
+	}
+
+	tr {
+		display: table-row;
+		border: none;
+		border: 1px solid #eee;
+    float: none;
+    margin: 0;
+		box-shadow: none;
+
+		td {
+			padding: .75em 0 0.75em .25em;
+      float: none;
+      width: auto;
+
+			&:before {
+				padding: 0 !important;
+			}
+		}
+	}
+
+	thead {
+		display: table-header-group;
+	}
+
+	tbody{
+		display: table-row-group;
+	}
+
+	tr:nth-of-type(even) {
+		background:none;
+		td {
+
+			&:before {
+
+			}
+		}
+	}
+}
+
+%responsive-tables {
+	@include rwd-first;
+
+	@media screen and (min-width: $medium-up) {
+		@include rwd-second;
+
+	}
+}
+
+%responsive-tables-large {
+	@include rwd-first;
+
+	@media screen and (min-width: $large-up) {
+		@include rwd-second;
+
+	}
+}
+
+@mixin responsive-tables($headings...) {
+	$list: $headings;
+
+	@each $list-headings in $list {
+		$i: index($list, $list-headings);
+		tbody tr td:nth-of-type(#{$i}):before {
+			content: $list-headings;
+		}
+
+		@media screen and (min-width: $medium-up) {
+			tbody tr td:nth-of-type(#{$i}):before {
+				content: '';
+			}
+		}
+
+	}
+}
+
+@mixin responsive-tables-large($headings...) {
+	$list: $headings;
+	@each $list-headings in $list {
+		$i: index($list, $list-headings);
+		tbody tr td:nth-of-type(#{$i}):before {
+			content: $list-headings;
+		}
+
+		@media screen and (min-width: $large-up) {
+			tbody tr td:nth-of-type(#{$i}):before {
+				content: '';
+			}
+		}
+
+	}
+}
+
+#rwd-table {
+	@extend %responsive-tables;
+	@include responsive-tables('Heading Col 1', 'Heading Col 2', 'Heading Col 3');
+}
+
+#rwd-table-large {
+	@extend %responsive-tables-large;
+	@include responsive-tables-large('Heading Col 1', 'Heading Col 2', 'Heading Col 3','Heading Col 4');
+}
+
+div.container{
+  margin: 10px;
+  padding: 10px;
+  height: 350px;
+}

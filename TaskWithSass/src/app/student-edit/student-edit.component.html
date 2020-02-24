@@ -1,0 +1,23 @@
+<div>
+  <h1>Student Edit Component</h1>
+  <h3>You Entered id is :: {{studentId}}</h3>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>StudentId</th>
+          <th>StudentName</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text" value="{{studentId}}"></td>
+          <td><input type="text" value="{{studentName}}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <button class="back" (click)="gotoBack()">Go to Back</button>
+  <router-outlet></router-outlet>
+</div>
