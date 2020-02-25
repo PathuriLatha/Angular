@@ -4,3 +4,7 @@ table, tr, th, td{
   border: 2px solid black;
 }
 */
+.loginForm, .registerForm{
+  width: 300px;
+  margin: 0 auto;
+}

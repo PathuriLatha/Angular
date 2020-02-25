@@ -1,7 +1,11 @@
 <div class="container">
   <h4 class="text-center text-danger">Home Component</h4>
   <div class="text-center">
-    <button class="btn btn-success" (click)="studentsList()">StudentsList</button>
+    <button class="btn btn-success" (click)="studentsList()">StudentsList</button>&nbsp;&nbsp;
+    <button class="btn btn-warning" [routerLink]="['/register']">Register</button>&nbsp;&nbsp;
+    <span *ngIf="!(mail == null || mail == undefined || mail == '') && !(password == null || password == undefined || password == '')">
+      <button class="btn btn-primary" [routerLink]="['/loginForm']">LoginForm</button>
+    </span>
   </div>
   <router-outlet></router-outlet>
 </div>

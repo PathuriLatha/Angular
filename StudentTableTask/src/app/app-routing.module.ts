@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentEditComponent } from './student-edit/student-edit.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -11,6 +13,8 @@ const routes: Routes = [
   /* { path: 'list', component: StudentListComponent }, */
   { path: 'studentDetails', component:  StudentDetailsComponent},
   { path: 'edit/:id/:name', component: StudentEditComponent},
+  { path: 'register', component: RegisterComponent },
+  { path: 'loginForm', component: LoginFormComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 
@@ -24,6 +28,8 @@ export const routingComponents = [
                                     HomeComponent,
                                     PageNotFoundComponent,
                                     StudentDetailsComponent,
-                                    StudentEditComponent
+                                    StudentEditComponent,
+                                    RegisterComponent,
+                                    LoginFormComponent
                                  ];
 

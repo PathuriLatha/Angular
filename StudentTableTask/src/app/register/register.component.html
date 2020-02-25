@@ -1,0 +1,96 @@
+<div class="container">
+  <h3 class="text-center text-primary">Registration Form</h3>
+  <form [formGroup]="registrationForm" class="registerForm">
+    <div>
+      <!--FirstName : <input type="text" name="firstName" [formControl]="firstName">-->
+      FirstName : <input class="form-control" type="text" name="firstName" formControlName="firstName">
+      <div class="text-danger" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+        <!--<span [hidden]="registrationForm.firstName.invalid "></span>-->
+        <span *ngIf="firstName.errors.required">FirstName can't be blank</span>
+        <span *ngIf="firstName.errors.minlength">FirstName should contain atleast 3 characters</span>
+        <span *ngIf="firstName.errors.maxlength">FirstName should have upto 20 characters</span>
+        <span *ngIf="firstName.errors.pattern">Alphabets only allowed</span>
+      </div>
+    </div><br>
+    <div>
+      LastName : <input class="form-control" type="text" formControlName="lastName">
+      <div class="text-danger" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+        <span *ngIf="lastName.errors.required">LastName can't be blank</span>
+        <span *ngIf="lastName.errors.minlength">LastName should contain atleast 3 characters</span>
+        <span *ngIf="lastName.errors.maxlength">LastName should have upto 20 characters</span>
+        <span *ngIf="lastName.errors.pattern">Alphabets only allowed</span>
+      </div>
+    </div><br>
+    <div>
+      Date Of Birth : <input class="form-control" type="date" name="dob" formControlName="dob">
+      <div class="text-danger" *ngIf="dob.invalid && (dob.dirty || dob.touched)">
+        <span *ngIf="dob.errors.required">Date of birth can't be blank</span>
+      </div>
+    </div><br>
+    <div>Gender :
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="maleGender" type="radio" name="gender" formControlName="gender" value="male" checked="true">
+        <label class="custom-control-label" for="maleGender">Male</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input class="custom-control-input" id="femaleGender" type="radio" name="gender" formControlName="gender" value="female">
+        <label class="custom-control-label" for="femaleGender">Female</label>
+      </div>
+      <div class="text-danger" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+        <span *ngIf="gender.errors.required">Gender can't be blank</span>
+      </div>
+    </div><br>
+    <div>
+      Email Id : <input class="form-control" type="email" name="email" formControlName="email">
+      <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+        <span *ngIf="email.errors.required">Email is Required</span>
+        <span *ngIf="email.errors.minlength">Email length is minimum 3 characters</span>
+        <span *ngIf="email.errors.maxlength">Email length is maximum 20 characters</span>
+        <span *ngIf="email.errors.pattern">Email is not valid</span>
+      </div>
+    </div><br>
+    <div>
+      Password : <input class="form-control" type="password" name="pwd" formControlName="pwd">
+      <div class="text-danger" *ngIf="registrationForm.controls.pwd.invalid && (registrationForm.controls.pwd.dirty || registrationForm.controls.pwd.touched)">
+        <span *ngIf="registrationForm.controls.pwd.errors.required">Password cant'be empty</span>
+      </div>
+    </div><br>
+    <div>
+      Confirm Password : <input class="form-control" type="password" name="cPwd" formControlName="cPwd">
+      <div class="text-danger" *ngIf="cPwd.invalid && (cPwd.dirty || cPwd.touched)">
+        <span *ngIf="cPwd.errors.required">Confirm Password can't be blank</span>
+      </div>
+    </div><br>
+    <div formGroupName="marks">
+      <h3>Marks</h3>
+      <div>
+        English : <input class="form-control" type="number" name="english" formControlName="english">
+        <div class="text-danger" *ngIf="english.invalid && (english.dirty || english.touched)">
+          <span *ngIf="english.errors.required">English marks required</span>
+        </div>
+      </div><br>
+      <div>
+        Maths : <input class="form-control" type="number" name="maths" formControlName="maths">
+        <div class="text-danger" *ngIf="maths.invalid && (maths.dirty || maths.touched)">
+          <span *ngIf="maths.errors.required">Maths marks required</span>
+        </div>
+      </div><br>
+      <div>
+        Science : <input class="form-control" type="number" name="science" formControlName="science">
+        <div class="text-danger" *ngIf="science.invalid && (science.dirty || science.touched)">
+          <span *ngIf="science.errors.required">Science marks required</span>
+        </div>
+      </div><br>
+      <div>
+        Social : <input class="form-control" type="number" name="social" formControlName="social">
+        <div class="text-danger" *ngIf="social.invalid && (social.dirty || social.touched)">
+          <span *ngIf="social.errors.required">Social marks required</span>
+        </div>
+      </div><br>
+    </div>
+
+    <!--<input class="btn btn-primary" type="submit" value="Submit" (click)="onRegisterClick()"><br>-->
+    <input class="btn btn-primary" type="button" value="Register" [routerLink]="['/home']"  (click)="onRegisterClick()">
+    <!--<div [innerHTML]="msg"></div>-->
+  </form>
+</div>

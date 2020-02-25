@@ -8,8 +8,15 @@ import { Router } from '@angular/router';
   styles: []
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  mail = '';
+  password = '';
+  constructor(private router: Router) {
+    this.mail = localStorage.getItem("mail");
+    this.password = localStorage.getItem("password");
+    /* this.mail = sessionStorage.getItem("mail");
+    this.password = sessionStorage.getItem("password"); */
+    console.log(this.mail+" "+this.password);
+  }
 
   ngOnInit() {
   }
@@ -17,4 +24,5 @@ export class HomeComponent implements OnInit {
   studentsList(){
     this.router.navigate(['studentDetails']);
   }
+
 }
