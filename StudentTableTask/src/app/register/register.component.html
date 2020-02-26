@@ -1,9 +1,9 @@
 <div class="container">
   <h3 class="text-center text-primary">Registration Form</h3>
   <form [formGroup]="registrationForm" class="registerForm">
-    <div>
+    <div class="form-group">
       <!--FirstName : <input type="text" name="firstName" [formControl]="firstName">-->
-      FirstName : <input class="form-control" type="text" name="firstName" formControlName="firstName">
+      FirstName : <input class="form-control" type="text" name="firstName" formControlName="firstName" placeholder="Enter first name" [ngClass]="{'is-invalid': firstName.invalid && (firstName.touched || firstName.dirty)}">
       <div class="text-danger" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
         <!--<span [hidden]="registrationForm.firstName.invalid "></span>-->
         <span *ngIf="firstName.errors.required">FirstName can't be blank</span>
@@ -12,8 +12,8 @@
         <span *ngIf="firstName.errors.pattern">Alphabets only allowed</span>
       </div>
     </div><br>
-    <div>
-      LastName : <input class="form-control" type="text" formControlName="lastName">
+    <div class="form-group">
+      LastName : <input class="form-control" type="text" formControlName="lastName" placeholder="Enter last name" [ngClass]="{'is-invalid': lastName.invalid && (lastName.dirty || lastName.touched)}">
       <div class="text-danger" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
         <span *ngIf="lastName.errors.required">LastName can't be blank</span>
         <span *ngIf="lastName.errors.minlength">LastName should contain atleast 3 characters</span>
@@ -21,13 +21,13 @@
         <span *ngIf="lastName.errors.pattern">Alphabets only allowed</span>
       </div>
     </div><br>
-    <div>
-      Date Of Birth : <input class="form-control" type="date" name="dob" formControlName="dob">
+    <div class="form-group">
+      Date Of Birth : <input class="form-control" type="date" name="dob" formControlName="dob" placeholder="Enter date of birth" [ngClass]="{'is-invalid': dob.invalid && (dob.dirty || dob.touched)}">
       <div class="text-danger" *ngIf="dob.invalid && (dob.dirty || dob.touched)">
         <span *ngIf="dob.errors.required">Date of birth can't be blank</span>
       </div>
     </div><br>
-    <div>Gender :
+    <div class="form-group">Gender :
       <div class="custom-control custom-radio">
         <input class="custom-control-input" id="maleGender" type="radio" name="gender" formControlName="gender" value="male" checked="true">
         <label class="custom-control-label" for="maleGender">Male</label>
@@ -40,57 +40,73 @@
         <span *ngIf="gender.errors.required">Gender can't be blank</span>
       </div>
     </div><br>
-    <div>
-      Email Id : <input class="form-control" type="email" name="email" formControlName="email">
+    <div class="form-group">
+      Email Id : <input class="form-control" type="email" name="email" formControlName="email" placeholder="Enter email id" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}">
       <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
         <span *ngIf="email.errors.required">Email is Required</span>
-        <span *ngIf="email.errors.minlength">Email length is minimum 3 characters</span>
+        <span *ngIf="email.errors.minlength">Email length is minimum 8 characters</span>
         <span *ngIf="email.errors.maxlength">Email length is maximum 20 characters</span>
         <span *ngIf="email.errors.pattern">Email is not valid</span>
       </div>
     </div><br>
-    <div>
-      Password : <input class="form-control" type="password" name="pwd" formControlName="pwd">
-      <div class="text-danger" *ngIf="registrationForm.controls.pwd.invalid && (registrationForm.controls.pwd.dirty || registrationForm.controls.pwd.touched)">
-        <span *ngIf="registrationForm.controls.pwd.errors.required">Password cant'be empty</span>
+    <div class="form-group">
+      Password : <input class="form-control" type="text" name="pwd" formControlName="pwd" placeholder="Enter password" [ngClass]="{'is-invalid': pwd.invalid && (pwd.dirty || pwd.touched)}">
+      <div class="text-danger" *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)">
+        <span *ngIf="pwd.errors.required">Password cant'be empty</span>
+        <span *ngIf="pwd.errors.minlength">Password should contain atleast 8 characters</span>
+        <span *ngIf="pwd.errors.maxlength">Password maximum length is 20 </span>
+        <span *ngIf="pwd.errors.pattern">password should contain atleast 1 lowercase letter, 1 uppercase letter, 1 number </span>
       </div>
     </div><br>
-    <div>
-      Confirm Password : <input class="form-control" type="password" name="cPwd" formControlName="cPwd">
+    <div class="form-group">
+      Confirm Password : <input class="form-control" type="text" name="cPwd" formControlName="cPwd" placeholder="Re-Enter Password" [ngClass]="{'is-invalid': cPwd.invalid && (cPwd.dirty || cPwd.touched)}">
       <div class="text-danger" *ngIf="cPwd.invalid && (cPwd.dirty || cPwd.touched)">
         <span *ngIf="cPwd.errors.required">Confirm Password can't be blank</span>
+        <span *ngIf="registrationForm.errors?.misMatch">password do not match</span>
       </div>
     </div><br>
     <div formGroupName="marks">
       <h3>Marks</h3>
-      <div>
-        English : <input class="form-control" type="number" name="english" formControlName="english">
+      <div class="form-group">
+        English : <input class="form-control" type="text" name="english" formControlName="english" placeholder="Enter english marks" [ngClass]="{'is-invalid': english.invalid && (english.dirty || english.touched)}">
         <div class="text-danger" *ngIf="english.invalid && (english.dirty || english.touched)">
           <span *ngIf="english.errors.required">English marks required</span>
+          <span *ngIf="english.errors.pattern">Marks contain only numbers</span>
+          <!--<span *ngIf="english.errors.min">above 18 only allowed</span>
+          <span *ngIf="english.errors.max">maximum marks only 100</span>-->
         </div>
       </div><br>
-      <div>
-        Maths : <input class="form-control" type="number" name="maths" formControlName="maths">
+      <div class="form-group">
+        Maths : <input class="form-control" type="text" name="maths" formControlName="maths" placeholder="Enter maths marks" [ngClass]="{'is-invalid': maths.invalid && (maths.dirty || maths.touched)}">
         <div class="text-danger" *ngIf="maths.invalid && (maths.dirty || maths.touched)">
           <span *ngIf="maths.errors.required">Maths marks required</span>
+          <span *ngIf="maths.errors.pattern">Marks contain only numbers</span>
+          <!--<span *ngIf="maths.errors.min">above 18 only allowed</span>
+          <span *ngIf="maths.errors.max">maximum marks only 100</span>-->
         </div>
       </div><br>
-      <div>
-        Science : <input class="form-control" type="number" name="science" formControlName="science">
+      <div class="form-group">
+        Science : <input class="form-control" type="text" name="science" formControlName="science" placeholder="Enter science marks" [ngClass]="{'is-invalid': science.invalid && (science.dirty || science.touched)}">
         <div class="text-danger" *ngIf="science.invalid && (science.dirty || science.touched)">
           <span *ngIf="science.errors.required">Science marks required</span>
+          <span *ngIf="science.errors.pattern">Marks contain only numbers</span>
+          <!--<span *ngIf="science.errors.min">above 18 only allowed</span>
+          <span *ngIf="science.errors.max">maximum marks only 100</span>-->
         </div>
       </div><br>
-      <div>
-        Social : <input class="form-control" type="number" name="social" formControlName="social">
+      <div class="form-group">
+        Social : <input class="form-control" type="text" name="social" formControlName="social" placeholder="Enter social marks" [ngClass]="{'is-invalid': social.invalid && (social.dirty || social.touched)}">
         <div class="text-danger" *ngIf="social.invalid && (social.dirty || social.touched)">
           <span *ngIf="social.errors.required">Social marks required</span>
+          <span *ngIf="social.errors.pattern">Marks contain only numbers</span>
+          <!--<span *ngIf="social.errors.min">above 18 only allowed</span>
+          <span *ngIf="social.errors.max">maximum marks only 100</span>-->
         </div>
       </div><br>
     </div>
 
-    <!--<input class="btn btn-primary" type="submit" value="Submit" (click)="onRegisterClick()"><br>-->
-    <input class="btn btn-primary" type="button" value="Register" [routerLink]="['/home']"  (click)="onRegisterClick()">
+    <!--<input class="btn btn-primary" type="button" value="Register" [routerLink]="['/home']"  (click)="onRegisterClick()">-->
+    <input class="btn btn-primary" type="button" value="Register" (click)="onRegisterClick()">
     <!--<div [innerHTML]="msg"></div>-->
   </form>
 </div>

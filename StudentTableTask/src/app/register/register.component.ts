@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
+import { PasswordValidator } from '../password.validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,27 +12,41 @@ export class RegisterComponent implements OnInit {
 
   /* msg: string = ""; */
   studentDetails = [];
-  registrationForm: FormGroup = new FormGroup({
+  submitted = false;
+
+  /* registrationForm: FormGroup = new FormGroup({
     firstName: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")]),
     lastName: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")]),
     dob: new FormControl("", [Validators.required]),
     gender: new FormControl("", [Validators.required]),
     email: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"), Validators.email]),
-    pwd: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-    cPwd: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+    pwd: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
+    cPwd: new FormControl("", [Validators.required, Validators.minLength(8), Validators.maxLength(20)]),
     marks: new FormGroup({
-      english: new FormControl("", [Validators.required]),
-      maths: new FormControl("", [Validators.required]),
-      science: new FormControl("", [Validators.required]),
-      social: new FormControl("", [Validators.required])
+      english: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(36), Validators.max(100)]),
+      maths: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(36), Validators.max(100)]),
+      science: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(36), Validators.max(100)]),
+      social: new FormControl("", [Validators.required, Validators.pattern("^[0-9]*$"), Validators.min(36), Validators.max(100)])
     })
-  });
-  /* registrationForm = this.fb.group({
-    firstName: ['', Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")],
-    lastName: ['', Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")]
-  }); */
+  }, {validators: PasswordValidator}); */
 
-  constructor() { }
+  constructor(private router: Router, private formBuilder: FormBuilder) { }
+
+  registrationForm = this.formBuilder.group({
+    firstName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")] ],
+    lastName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")] ],
+    dob: ["", [Validators.required] ],
+    gender: ["", [Validators.required] ],
+    email: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern("^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"), Validators.email] ],
+    pwd: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}")] ],
+    cPwd: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20)] ],
+    marks: this.formBuilder.group({
+      english: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ],
+      maths: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ],
+      science: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ],
+      social: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ]
+    })
+  }, {validators: PasswordValidator});
 
   ngOnInit() { }
 
@@ -87,6 +103,9 @@ export class RegisterComponent implements OnInit {
     /* sessionStorage.setItem("mail", email);
     sessionStorage.setItem("password", pwd); */
 
+    console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `);
+    this.router.navigate(['home']);
+
     if(this.registrationForm.valid){
       console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `);
       /* this.msg += "FirstName :: "+firstName+"<br>";
@@ -117,11 +136,24 @@ export class RegisterComponent implements OnInit {
         console.log(value);
       }); */
 
+      this.router.navigate(['home']);
 
     }
     else{
       console.log("Error");
+      console.log(this.registrationForm.valid);
+      console.log(this.registrationForm);
     }
+
+    /*  if(this.registrationForm.invalid){
+      return;
+    }
+    else{
+      console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `);
+      this.submitted = true;
+      this.router.navigate(['home']);
+    } */
+
   }
 
 }
