@@ -20,6 +20,15 @@ export const PasswordValidator: ValidatorFn = (control: FormGroup): ValidationEr
   const password = control.get('pwd');
   const confirmPassword = control.get('cPwd');
   //console.log(password +" "+confirmPassword);
+  /* console.log(password.value.length);
+  console.log(confirmPassword.value.length); */
+  /* console.log(password);
+  console.log(confirmPassword); */
+  /* console.log(password.value.length === confirmPassword.value.length);
+  console.log(password.value !== confirmPassword.value); */
+  if(password.pristine || confirmPassword.pristine){
+    return null;
+  }
 
-  return password && confirmPassword && password.value !== confirmPassword ? {'misMatch': true} : null ;
+  return password && confirmPassword && password.value.length !== confirmPassword.value.length && password.value !== confirmPassword.value ? {'misMatch': true} : null ;
 };

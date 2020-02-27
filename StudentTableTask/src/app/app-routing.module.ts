@@ -6,6 +6,7 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 import { StudentEditComponent } from './student-edit/student-edit.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { TemplateDrivenFormsComponent } from './template-driven-forms/template-driven-forms.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'edit/:id/:name', component: StudentEditComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'loginForm', component: LoginFormComponent },
+  { path: 'templateDrivenForm', component: TemplateDrivenFormsComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 
@@ -30,6 +32,7 @@ export const routingComponents = [
                                     StudentDetailsComponent,
                                     StudentEditComponent,
                                     RegisterComponent,
-                                    LoginFormComponent
+                                    LoginFormComponent,
+                                    TemplateDrivenFormsComponent
                                  ];
 

@@ -6,6 +6,9 @@
     <span *ngIf="!(mail == null || mail == undefined || mail == '') && !(password == null || password == undefined || password == '')">
       <button class="btn btn-primary" [routerLink]="['/loginForm']">LoginForm</button>
     </span>
+  </div><br>
+  <div class="text-center">
+    <button class="btn btn-info" [routerLink]="['/templateDrivenForm']">TemplateDrivenForm</button>
   </div>
   <router-outlet></router-outlet>
 </div>

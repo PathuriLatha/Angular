@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { PasswordValidator } from '../password.validator';
 import { Router } from '@angular/router';
+import { AbstractControl } from '@angular/forms';
+/* import { PasswordValidator } from '../password-validator.directive'; */
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,7 @@ export class RegisterComponent implements OnInit {
   /* msg: string = ""; */
   studentDetails = [];
   submitted = false;
-
+  /* registrationForm: FormGroup; */
   /* registrationForm: FormGroup = new FormGroup({
     firstName: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")]),
     lastName: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")]),
@@ -32,21 +34,25 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router: Router, private formBuilder: FormBuilder) { }
 
-  registrationForm = this.formBuilder.group({
+  registrationForm: FormGroup = this.formBuilder.group({
     firstName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")] ],
     lastName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")] ],
     dob: ["", [Validators.required] ],
     gender: ["", [Validators.required] ],
     email: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern("^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"), Validators.email] ],
+    /* pwdGroup: this.formBuilder.group({
+      pwd: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}")] ],
+      cPwd: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20)] ],
+    }, { validator: this.passwordMismatch}), */
     pwd: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}")] ],
-    cPwd: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20)] ],
+    cPwd: ["", Validators.required ],
     marks: this.formBuilder.group({
       english: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ],
       maths: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ],
       science: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ],
       social: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ]
     })
-  }, {validators: PasswordValidator});
+  }, {validator: PasswordValidator});
 
   ngOnInit() { }
 
@@ -66,6 +72,12 @@ export class RegisterComponent implements OnInit {
   get email(){
     return this.registrationForm.get('email');
   }
+  /* get pwd(){
+    return this.registrationForm.get('pwdGroup').get('pwd');
+  }
+  get cPwd(){
+    return this.registrationForm.get('pwdGroup').get('cPwd');
+  } */
   get pwd(){
     return this.registrationForm.get('pwd');
   }
@@ -91,6 +103,8 @@ export class RegisterComponent implements OnInit {
     let dob = this.registrationForm.get('dob').value;
     let gender = this.registrationForm.get('gender').value;
     let email = this.registrationForm.get('email').value;
+    /* let pwd = this.registrationForm.get('pwdGroup').get('pwd').value;
+    let cPwd = this.registrationForm.get('pwdGroup').get('cPwd').value; */
     let pwd = this.registrationForm.get('pwd').value;
     let cPwd = this.registrationForm.get('cPwd').value;
     let english = this.registrationForm.get(['marks', 'english']).value;
@@ -104,22 +118,11 @@ export class RegisterComponent implements OnInit {
     sessionStorage.setItem("password", pwd); */
 
     console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `);
-    this.router.navigate(['home']);
+    /* this.router.navigate(['home']); */
 
     if(this.registrationForm.valid){
+      this.submitted = true;
       console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `);
-      /* this.msg += "FirstName :: "+firstName+"<br>";
-      this.msg += "LastName :: "+lastName+"<br>";
-      this.msg += "Date of birth :: "+dob+"<br>";
-      this.msg += "Gender :: "+gender+"<br>";
-      this.msg += "Email Id :: "+email+"<br>";
-      this.msg += "Password :: "+pwd+"<br>";
-      this.msg += "Confirm Password :: "+cPwd+"<br>";
-      this.msg += "Marks <br>";
-      this.msg += "English :: "+english+"<br>";
-      this.msg += "Maths :: "+maths+"<br>";
-      this.msg += "Science :: "+science+"<br>";
-      this.msg += "Social :: "+social+"<br>"; */
       this.studentDetails.push(firstName);
       this.studentDetails.push(lastName);
       this.studentDetails.push(dob);
@@ -137,12 +140,15 @@ export class RegisterComponent implements OnInit {
       }); */
 
       this.router.navigate(['home']);
+      console.log("submitted :: "+this.submitted);
 
     }
     else{
+      this.submitted = false;
       console.log("Error");
       console.log(this.registrationForm.valid);
-      console.log(this.registrationForm);
+      console.log(this.registrationForm.invalid);
+      console.log("submitted :: "+this.submitted);
     }
 
     /*  if(this.registrationForm.invalid){
@@ -155,5 +161,17 @@ export class RegisterComponent implements OnInit {
     } */
 
   }
+
+  /* passwordMismatch(group: AbstractControl): {[key: string]: any} | null {
+    const password = group.get('pwd');
+    const confirmPassword = group.get('cPwd');
+
+    if(password.value === confirmPassword.value || confirmPassword.pristine){
+      return null;
+    }
+    else{
+      return {'misMatch': true};
+    }
+  } */
 
 }

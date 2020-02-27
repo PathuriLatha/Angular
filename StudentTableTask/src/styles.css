@@ -5,7 +5,7 @@ table, tr, th, td{
 }
 */
 
-/*.loginForm, .registerForm{
-  width: 300px;
+.loginForm, .registerForm{
+  width: 500px;
   margin: 0 auto;
-}*/
+}
