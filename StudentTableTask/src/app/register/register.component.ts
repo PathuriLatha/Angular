@@ -116,13 +116,17 @@ export class RegisterComponent implements OnInit {
     localStorage.setItem("password", pwd);
     /* sessionStorage.setItem("mail", email);
     sessionStorage.setItem("password", pwd); */
+    console.log(this.registrationForm.value);
 
-    console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `);
+    /* console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `); */
     /* this.router.navigate(['home']); */
 
     if(this.registrationForm.valid){
       this.submitted = true;
-      console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `);
+
+      /* console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `); */
+      console.log(this.registrationForm.value);
+
       this.studentDetails.push(firstName);
       this.studentDetails.push(lastName);
       this.studentDetails.push(dob);
@@ -139,8 +143,8 @@ export class RegisterComponent implements OnInit {
         console.log(value);
       }); */
 
-      this.router.navigate(['home']);
       console.log("submitted :: "+this.submitted);
+      this.router.navigate(['home']);
 
     }
     else{

@@ -7,6 +7,7 @@ import { StudentEditComponent } from './student-edit/student-edit.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { TemplateDrivenFormsComponent } from './template-driven-forms/template-driven-forms.component';
+import { FieldsetsComponent } from './fieldsets/fieldsets.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'loginForm', component: LoginFormComponent },
   { path: 'templateDrivenForm', component: TemplateDrivenFormsComponent },
+  { path: 'fieldsets', component: FieldsetsComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 
@@ -33,6 +35,7 @@ export const routingComponents = [
                                     StudentEditComponent,
                                     RegisterComponent,
                                     LoginFormComponent,
-                                    TemplateDrivenFormsComponent
+                                    TemplateDrivenFormsComponent,
+                                    FieldsetsComponent
                                  ];
 

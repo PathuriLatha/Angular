@@ -5,7 +5,8 @@ table, tr, th, td{
 }
 */
 
-.loginForm, .registerForm{
-  width: 500px;
+.loginForm, .registerForm, .fieldsetForm{
+  width: 70%;
+  padding: 3%;
   margin: 0 auto;
 }

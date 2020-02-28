@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { StudentViewComponent } from './student-details/student-view/student-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,

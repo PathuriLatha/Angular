@@ -1,0 +1,56 @@
+<div>
+  <form #myform="ngForm" class="fieldsetForm">
+    Firstname:
+    <input type="text" class="form-control" [(ngModel)]="firstname" name="username" required="required" minlength="3" maxlength="20" pattern="^[a-zA-Z ]*$" #control1="ngModel">
+    <span class="text-danger" *ngIf="control1.touched && control1.invalid && control1.errors.required">Firstname can't be blank</span>
+    <span class="text-danger" *ngIf="control1.touched && control1.invalid && control1.errors.minlength">Min: 3 characters</span>
+    <span class="text-danger" *ngIf="control1.touched && control1.invalid && control1.errors.pattern">Alphabets only allowed</span>
+    <br>
+    Lastname:
+    <input class="form-control" type="text" [(ngModel)]="lastname" name="lastname" required="required" minlength="3" maxlength="20" pattern="^[a-zA-Z ]*$" #control2="ngModel">
+    <span class="text-danger" *ngIf="control2.touched && control2.invalid && control2.errors.required">Lastname can't be blank</span>
+    <span class="text-danger" *ngIf="control2.touched && control2.invalid && control2.errors.minlength">Min: 3 characters</span>
+    <span class="text-danger" *ngIf="control2.touched && control2.invalid && control2.errors.pattern">Alphabets only allowed</span>
+    <br>
+    Email:
+    <input type="text" class="form-control" [(ngModel)]="email" name="email" required="required" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" #control3="ngModel">
+    <span class="text-danger" *ngIf="control3.touched && control3.invalid && control3.errors.required">Email can't be blank</span>
+    <span class="text-danger" *ngIf="control3.touched && control3.invalid && control3.errors.pattern">Email is not valid</span>
+    <br>
+    Amount:
+    <input type="text" class="form-control" [(ngModel)]="amount" name="amount" required="required" pattern="^[0-9]*$" #control4="ngModel">
+    <span class="text-danger" *ngIf="control4.touched && control4.invalid && control4.errors.required">Amount can't be blank</span>
+    <span class="text-danger" *ngIf="control4.touched && control4.invalid && control4.errors.pattern">Alphabets not allowed</span>
+    <br>
+    Gender:
+    <div class="form-control">
+      <label class="radio-inline">
+        <div class="custom-control custom-radio">
+          <input class="custom-control-input" type="radio" [(ngModel)]="gender" value="male" name="gender" required="required" #control5="ngModel">
+          <label class="custom-control-label">Male</label>
+        </div>
+      </label>
+      <label class="radio-inline">
+        <div class="custom-control custom-radio">
+          <input class="custom-control-input" type="radio" [(ngModel)]="gender" value="female" name="gender" required="required" #control5="ngModel">
+          <label class="custom-control-label">Female</label>
+        </div>
+      </label>
+    </div>
+    <span class="text-danger" *ngIf="control5.touched && control5.invalid && control5.errors.required">Please Select Gender</span>
+    <br>
+    Country:
+    <select [(ngModel)]="country" class="form-control" name="country" required="required" #control6="ngModel">
+      <option value="">Please Select</option>
+      <option>India</option>
+      <option>USA</option>
+      <option>UK</option>
+      <option>Japan</option>
+    </select>
+    <span class="text-danger" *ngIf="control6.touched && control6.invalid && control6.errors.required">Please Select Country</span>
+    <br>
+    <input type="submit" class="btn btn-danger" value="Register" (click)="onRegisterClick(myform)"><br>
+    <div [innerHTML]="success" class="text-success"></div>
+    <div [innerHTML]="fail" class="text-danger"></div>
+  </form>
+</div>
