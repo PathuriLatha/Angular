@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
       science: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ],
       social: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ]
     })
-  }, {validator: PasswordValidator});
+  });
 
   ngOnInit() { }
 
