@@ -129,12 +129,12 @@ export class RegisterComponent implements OnInit {
     console.log("myDate: "+myDate);
     console.log("currentDate: "+currentDate);
     if(enteredDate != undefined && enteredDate != ''){
-      if(this.currentDate <= this.myDate ){
-        this.errorDateMsg = "Invalid Date";
+      if(currentDate <= myDate ){
+        this.errorDateMsg = "Invalid DateOfBirth";
       }
-      /* else{
-        this.errorDateMsg = "Date valid";
-      } */
+      else{
+        this.errorDateMsg = "";
+      }
     }
   }
 
