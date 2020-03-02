@@ -6,7 +6,7 @@
       <input class="form-control" type="text" name="userName" [(ngModel)]="formMail" formControlName="userName" placeholder="Enter mail or user id" [ngClass]="{'is-invalid': userName.invalid && (userName.dirty || userName.touched)}">
       <div class="text-danger" *ngIf="userName.invalid && (userName.dirty || userName.touched)">
         <span *ngIf="userName.errors.required">Please provide Username</span>
-        <span *ngIf="userName.errors.minLength">This field should contain Atleast 8 characters</span>
+        <!--<span *ngIf="userName.errors.minLength">This field should contain Atleast 8 characters</span>-->
         <span *ngIf="userName.errors.maxLength">This field should maximum 20 characters</span>
         <span *ngIf="userName.errors.pattern">Please provide correct userName</span>
       </div>

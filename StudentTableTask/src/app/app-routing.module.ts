@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'loginForm', component: LoginFormComponent },
   { path: 'templateDrivenForm', component: TemplateDrivenFormsComponent },
   { path: 'fieldsets', component: FieldsetsComponent },
+/*   { path: 'newTab', component: StudentDetailsComponent }, */
   { path: "**", component: PageNotFoundComponent }
 ];
 

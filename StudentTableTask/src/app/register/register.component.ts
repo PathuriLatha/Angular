@@ -15,6 +15,9 @@ export class RegisterComponent implements OnInit {
   /* msg: string = ""; */
   studentDetails = [];
   submitted = false;
+  errorCPwdMsg = '';
+  errorDateMsg = '';
+
   /* registrationForm: FormGroup; */
   /* registrationForm: FormGroup = new FormGroup({
     firstName: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")]),
@@ -32,20 +35,23 @@ export class RegisterComponent implements OnInit {
     })
   }, {validators: PasswordValidator}); */
 
-  constructor(private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private router: Router, private formBuilder: FormBuilder) {
+
+  }
 
   registrationForm: FormGroup = this.formBuilder.group({
     firstName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")] ],
     lastName: ["", [Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern("^[a-zA-Z ]*$")] ],
     dob: ["", [Validators.required] ],
     gender: ["", [Validators.required] ],
-    email: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern("^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"), Validators.email] ],
+    email: ["", [Validators.required, Validators.maxLength(20), Validators.pattern("^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"), Validators.email] ],
     /* pwdGroup: this.formBuilder.group({
       pwd: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}")] ],
       cPwd: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20)] ],
     }, { validator: this.passwordMismatch}), */
+
     pwd: ["", [Validators.required, Validators.minLength(8), Validators.maxLength(20), Validators.pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&].{8,}")] ],
-    cPwd: ["", Validators.required ],
+    cPwd: ["", Validators.required],
     marks: this.formBuilder.group({
       english: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ],
       maths: ["", [Validators.required, Validators.pattern("^[0-9]*$")] ],
@@ -97,6 +103,41 @@ export class RegisterComponent implements OnInit {
     return this.registrationForm.get('marks').get('social');
   }
 
+  cPwdValidation(){
+    let testPassword = this.pwd.value;
+    let testConfirmPassword = this.cPwd.value;
+    /* console.log("password :: "+testPassword);
+    console.log("confirmPassword :: "+testConfirmPassword); */
+    if(testConfirmPassword != undefined  && testConfirmPassword != ''){
+      if(testPassword === testConfirmPassword){
+        this.errorCPwdMsg = "";
+      }
+      else{
+        this.errorCPwdMsg = "Password does not match";
+      }
+    }
+  }
+
+  dateValidation(){
+    let date = new Date();
+    let enteredDate = this.dob.value;
+    let d = date.getDay();
+    let m = date.getMonth();
+    let y = date.getFullYear();
+    let currentDate = new Date(y, m, d);
+    let myDate = new Date(enteredDate);
+    console.log("myDate: "+myDate);
+    console.log("currentDate: "+currentDate);
+    if(enteredDate != undefined && enteredDate != ''){
+      if(this.currentDate <= this.myDate ){
+        this.errorDateMsg = "Invalid Date";
+      }
+      /* else{
+        this.errorDateMsg = "Date valid";
+      } */
+    }
+  }
+
   onRegisterClick(){
     let firstName = this.registrationForm.controls['firstName'].value;
     let lastName = this.registrationForm.get('lastName').value;
@@ -116,7 +157,7 @@ export class RegisterComponent implements OnInit {
     localStorage.setItem("password", pwd);
     /* sessionStorage.setItem("mail", email);
     sessionStorage.setItem("password", pwd); */
-    console.log(this.registrationForm.value);
+    /* console.log(this.registrationForm.value); */
 
     /* console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `); */
     /* this.router.navigate(['home']); */
@@ -124,7 +165,7 @@ export class RegisterComponent implements OnInit {
     if(this.registrationForm.valid){
       this.submitted = true;
 
-      /* console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `); */
+      console.log(` FirstName = ${firstName}\n LastName = ${lastName}\n Date Of Birth = ${dob}\n Gender = ${gender}\n Email = ${email}\n Password = ${pwd}\n Confirm Password = ${cPwd}\n Marks :: \n English = ${english}\n Maths = ${maths}\n Science = ${science}\n Social = ${social} `);
       console.log(this.registrationForm.value);
 
       this.studentDetails.push(firstName);

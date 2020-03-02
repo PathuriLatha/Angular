@@ -30,5 +30,6 @@ export const PasswordValidator: ValidatorFn = (control: FormGroup): ValidationEr
     return null;
   }
 
-  return password && confirmPassword && password.value.length !== confirmPassword.value.length && password.value !== confirmPassword.value ? {'misMatch': true} : null ;
+  /* return password && confirmPassword && password.value.length !== confirmPassword.value.length && password.value !== confirmPassword.value ? {'misMatch': true} : null ; */
+  return password && confirmPassword && password.value !== confirmPassword.value ? {'misMatch': true} : null ;
 };

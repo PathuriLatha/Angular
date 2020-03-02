@@ -9,7 +9,7 @@
         <input class="form-control" type="text" name="firstName" formControlName="firstName" placeholder="Enter first name" [ngClass]="{'is-invalid': firstName.invalid && (firstName.touched || firstName.dirty)}">
         <div class="text-danger" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
           <!--<span [hidden]="registrationForm.firstName.invalid "></span>-->
-          <span *ngIf="firstName.errors.required">FirstName can't be blank</span>
+          <span *ngIf="firstName.errors.required">FirstName is required</span>
           <span *ngIf="firstName.errors.minlength">FirstName should contain atleast 3 characters</span>
           <span *ngIf="firstName.errors.maxlength">FirstName should have upto 20 characters</span>
           <span *ngIf="firstName.errors.pattern">Alphabets only allowed</span>
@@ -19,7 +19,7 @@
         <label>LastName</label>
         <input class="form-control" type="text" formControlName="lastName" placeholder="Enter last name" [ngClass]="{'is-invalid': lastName.invalid && (lastName.dirty || lastName.touched)}">
         <div class="text-danger" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-          <span *ngIf="lastName.errors.required">LastName can't be blank</span>
+          <span *ngIf="lastName.errors.required">LastName is required</span>
           <span *ngIf="lastName.errors.minlength">LastName should contain atleast 3 characters</span>
           <span *ngIf="lastName.errors.maxlength">LastName should have upto 20 characters</span>
           <span *ngIf="lastName.errors.pattern">Alphabets only allowed</span>
@@ -27,10 +27,11 @@
       </div><br>
       <div class="form-group">
         <label>Date Of Birth</label>
-        <input class="form-control" type="date" name="dob" formControlName="dob" placeholder="Enter date of birth" [ngClass]="{'is-invalid': dob.invalid && (dob.dirty || dob.touched)}">
+        <input class="form-control" type="date" name="dob" (keyup)="dateValidation()" formControlName="dob" placeholder="Enter date of birth" [ngClass]="{'is-invalid': dob.invalid && (dob.dirty || dob.touched)}">
         <div class="text-danger" *ngIf="dob.invalid && (dob.dirty || dob.touched)">
-          <span *ngIf="dob.errors.required">Date of birth can't be blank</span>
+          <span *ngIf="dob.errors.required">DateOfBirth is required</span>
         </div>
+        <span class="text-danger">{{errorDateMsg}}</span>
       </div><br>
       <div class="form-group">
         <label>Gender</label>
@@ -47,38 +48,46 @@
               <label class="custom-control-label" for="femaleGender">Female</label>
             </div>
           </label>
-          <div class="text-danger" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
-            <span *ngIf="gender.errors.required">Gender can't be blank</span>
-          </div>
         </div>
-      </div>
+        <div class="text-danger" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+          <span *ngIf="gender.errors.required">Gender is required</span>
+        </div>
+      </div><br>
       <div class="form-group">
         <label>Email Id</label>
         <input class="form-control" type="email" name="email" formControlName="email" placeholder="Enter email id" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}">
         <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
           <span *ngIf="email.errors.required">Email is Required</span>
-          <span *ngIf="email.errors.minlength">Email length is minimum 8 characters</span>
+          <!--<span *ngIf="email.errors.minlength">Email length is minimum 8 characters</span>-->
           <span *ngIf="email.errors.maxlength">Email length is maximum 20 characters</span>
           <span *ngIf="email.errors.pattern">Email is not valid</span>
         </div>
       </div><br>
       <div class="form-group">
         <label>Password</label>
-        <input class="form-control" type="text" name="pwd" formControlName="pwd" placeholder="Enter password" [ngClass]="{'is-invalid': pwd.invalid && (pwd.dirty || pwd.touched)}">
+        <input class="form-control" type="password" name="pwd" formControlName="pwd" placeholder="Enter password" [ngClass]="{'is-invalid': pwd.invalid && (pwd.dirty || pwd.touched)}">
         <div class="text-danger" *ngIf="pwd.invalid && (pwd.dirty || pwd.touched)">
-          <span *ngIf="pwd.errors.required">Password cant'be empty</span>
+          <span *ngIf="pwd.errors.required">Password is required</span>
           <span *ngIf="pwd.errors.minlength">Password should contain atleast 8 characters</span>
           <span *ngIf="pwd.errors.maxlength">Password maximum length is 20 </span>
-          <span *ngIf="pwd.errors.pattern">password should contain atleast 1 lowercase letter, 1 uppercase letter, 1 number </span>
+          <span *ngIf="pwd.errors.pattern">Password should contain atleast 1 lowercase letter, 1 uppercase letter, 1 number </span>
         </div>
       </div><br>
+      <!--<div class="form-group">
+        <label>Confirm Password</label>
+        <input class="form-control" type="password" name="cPwd" formControlName="cPwd" placeholder="Re-Enter Password" [ngClass]="{'is-invalid': registrationForm.errors?.misMatch || cPwd.invalid && (cPwd.dirty || cPwd.touched)}">
+        <div class="text-danger" *ngIf="registrationForm.errors?.misMatch || cPwd.invalid && (cPwd.dirty || cPwd.touched)">
+          <span *ngIf="cPwd.errors.required">ConfirmPassword is required</span>
+          <span *ngIf="registrationForm.errors?.misMatch">Password does not match</span>
+        </div>
+      </div>-->
       <div class="form-group">
         <label>Confirm Password</label>
-        <input class="form-control" type="text" name="cPwd" formControlName="cPwd" placeholder="Re-Enter Password" [ngClass]="{'is-invalid': registrationForm.errors?.misMatch || cPwd.invalid && (cPwd.dirty || cPwd.touched)}">
-        <div class="text-danger" *ngIf="registrationForm.errors?.misMatch || cPwd.invalid && (cPwd.dirty || cPwd.touched)">
-          <span *ngIf="registrationForm.errors?.misMatch">password do not match</span>
-          <span *ngIf="cPwd.errors.required">Confirm Password can't be blank</span>
+        <input class="form-control" type="password" name="cPwd" (keyup)="cPwdValidation()" formControlName="cPwd" placeholder="Re-Enter Password" [ngClass]="{'is-invalid': cPwd.invalid && (cPwd.dirty || cPwd.touched)}">
+        <div class="text-danger" *ngIf="cPwd.invalid && (cPwd.dirty || cPwd.touched)">
+          <span *ngIf="cPwd.errors.required">ConfirmPassword is required</span>
         </div>
+        <span class="text-danger">{{errorCPwdMsg}}</span>
       </div>
     </fieldset>
     <div formGroupName="marks">
@@ -131,5 +140,8 @@
     <!--<input class="btn btn-primary" type="button" value="Register" [routerLink]="['/home']"  (click)="onRegisterClick()">-->
     <input class="btn btn-primary registerBtn" type="button" value="Register" (click)="onRegisterClick()" [disabled]="registrationForm.invalid">
     <!--<div [innerHTML]="msg"></div>-->
+  <br><br>
+    <!--{{registrationForm.value | json }}-->
+
   </form>
 </div>

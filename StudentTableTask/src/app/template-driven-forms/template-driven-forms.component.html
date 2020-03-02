@@ -5,34 +5,55 @@
       <button class="btn btn-info" [routerLink]="['/fieldsets']">Fieldset</button>
     </div>
     <form #detailsForm="ngForm" (ngSubmit)="onSubmit()">
+      {{detailsForm.value | json }}
+      <hr />
+      {{ details | json }}
+
+      <br><br>
+
       <div class="form-group">
         <label for="name">Name</label>
+        <!--<input type="text" class="form-control" id="name" [ngModel]="details.name" name="name" #name="ngModel" required>-->
         <input type="text" class="form-control" id="name" [(ngModel)]="details.name" name="name" #name="ngModel" required>
         <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Invalid name</div>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
+        <!--<input type="text" class="form-control" id="email" [ngModel]="details.email" name="email" #email="ngModel" required>-->
         <input type="text" class="form-control" id="email" [(ngModel)]="details.email" name="email" #email="ngModel" required>
         <div [hidden]="email.valid || email.pristine" class="alert alert-danger">Invalid email</div>
       </div>
       <div class="form-group">
         <label for="name">State</label>
-        <select type="text" class="form-control" id="state" [(ngModel)]="details.state" name="state" #state="ngModel" required>
+        <!--<select type="text" class="form-control" id="state" [ngModel]="details.state" name="state" #state="ngModel" required>
           <option>Select State</option>
+          <option *ngFor="let state of states" [value]="state">{{state}}</option>
+        </select>-->
+        <select type="text" class="form-control" id="state" [(ngModel)]="details.state" name="state" #state="ngModel" [class.is-invalid]="state.invalid && state.touched" required>
+          <option value="">Select State</option>
           <option *ngFor="let state of states" [value]="state">{{state}}</option>
         </select>
         <div [hidden]="state.valid || state.pristine" class="alert alert-danger">State is required</div>
       </div>
       <div class="form-group">
         <label for="name">City</label>
-        <select type="text" class="form-control" id="city" [(ngModel)]="details.city" name="city" #city="ngModel" required>
+        <!--<select type="text" class="form-control" id="city" [ngModel]="details.city" name="city" #city="ngModel" required>
           <option>Select City</option>
+          <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+        </select>-->
+        <select type="text" class="form-control" id="city" [(ngModel)]="details.city" name="city" #city="ngModel" required>
+          <option value="">Select City</option>
           <option *ngFor="let city of cities" [value]="city">{{city}}</option>
         </select>
         <div [hidden]="city.valid || city.pristine" class="alert alert-danger">City is required</div>
       </div>
       <button type="submit" class="btn btn-success" [disabled]="!detailsForm.form.valid">submit</button>&nbsp;&nbsp;
-      <button type="button" class="btn btn-warning" (click)="addNew(); detailsForm.reset()">Add</button>
+      <button type="button" class="btn btn-warning" (click)="addNew(); detailsForm.reset()">Add</button>&nbsp;&nbsp;
+      <button type="button" class="btn btn-danger" id="jqueryBtn">usingJquery</button>&nbsp;&nbsp;
+      <br>
+      <br>
+      <button type="button" class="btn btn-info" (click)="redirectToNewTab()">redirect two new tab using window URL</button>&nbsp;&nbsp;
+      <button type="button" formtarget="_blank" class="btn btn-primary" [routerLink]="['/newTab']">redirect two new tab using Routing</button>&nbsp;&nbsp;
     </form>
   </div>
   <div [hidden]="!submitted">
