@@ -11,5 +11,15 @@
   <!--<div class="text-center">-->
     <button class="btn btn-info" [routerLink]="['/templateDrivenForm']">TemplateDrivenForm</button>
   </div>
+  <div>
+    <div>
+      <input type="radio" name="colors" (click)="color='lightgreen'">Green
+      <input type="radio" name="colors" (click)="color='yellow'">Yellow
+      <input type="radio" name="colors" (click)="color='cyan'">Cyan
+    </div>
+    <div appHighlight>This is a Attribute-directive</div>
+    <div [appHighlight]="color">This is using @Input property</div>
+  </div>
+
   <router-outlet></router-outlet>
 </div>

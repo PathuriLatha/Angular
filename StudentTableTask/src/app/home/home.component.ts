@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   mail = '';
   password = '';
+  color: string;
   constructor(private router: Router) {
     this.mail = localStorage.getItem("mail");
     this.password = localStorage.getItem("password");

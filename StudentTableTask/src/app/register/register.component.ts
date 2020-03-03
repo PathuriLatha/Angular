@@ -36,7 +36,6 @@ export class RegisterComponent implements OnInit {
   }, {validators: PasswordValidator}); */
 
   constructor(private router: Router, private formBuilder: FormBuilder) {
-
   }
 
   registrationForm: FormGroup = this.formBuilder.group({
@@ -124,10 +123,12 @@ export class RegisterComponent implements OnInit {
     let d = date.getDay();
     let m = date.getMonth();
     let y = date.getFullYear();
-    let currentDate = new Date(y, m, d);
+    /* let currentDate = new Date(y, m, d); */
+    let currentDate = new Date(date);
     let myDate = new Date(enteredDate);
+    /* console.log("enteredDate: "+enteredDate);
     console.log("myDate: "+myDate);
-    console.log("currentDate: "+currentDate);
+    console.log("currentDate: "+currentDate); */
     if(enteredDate != undefined && enteredDate != ''){
       if(currentDate <= myDate ){
         this.errorDateMsg = "Invalid DateOfBirth";
@@ -137,6 +138,8 @@ export class RegisterComponent implements OnInit {
       }
     }
   }
+/* */
+
 
   onRegisterClick(){
     let firstName = this.registrationForm.controls['firstName'].value;

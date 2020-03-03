@@ -6,12 +6,14 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentViewComponent } from './student-details/student-view/student-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    StudentViewComponent
+    StudentViewComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,

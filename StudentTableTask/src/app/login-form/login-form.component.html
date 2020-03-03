@@ -22,7 +22,7 @@
         <span></span>
       </div>
     </div><br>
-    <button class="btn btn-success loginBtn" type="submit" (click)="login()">Login</button>
+    <button class="btn btn-success loginBtn" type="submit" (click)="login()" [disabled]="loginForm.invalid">Login</button>
   </form>
   <div class="text-center text-success" [innerHTML]="success"></div>
   <h4 class="text-center text-danger" [innerHTML]="fail"></h4>
