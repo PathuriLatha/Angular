@@ -7,19 +7,10 @@
       <button class="btn btn-primary" [routerLink]="['/loginForm']">LoginForm</button>
     </span>
   </div><br>
-  <div class="text-center" [hidden]="true">
-  <!--<div class="text-center">-->
-    <button class="btn btn-info" [routerLink]="['/templateDrivenForm']">TemplateDrivenForm</button>
+  <!--<div class="text-center" [hidden]="true">-->
+  <div class="text-center">
+    <button class="btn btn-info" [routerLink]="['/templateDrivenForm']">TemplateDrivenForm</button>&nbsp;&nbsp;
+    <button class="btn btn-danger" [routerLink]="['/directives']">Directives</button>
   </div>
-  <div>
-    <div>
-      <input type="radio" name="colors" (click)="color='lightgreen'">Green
-      <input type="radio" name="colors" (click)="color='yellow'">Yellow
-      <input type="radio" name="colors" (click)="color='cyan'">Cyan
-    </div>
-    <div appHighlight>This is a Attribute-directive</div>
-    <div [appHighlight]="color">This is using @Input property</div>
-  </div>
-
   <router-outlet></router-outlet>
 </div>

@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { TemplateDrivenFormsComponent } from './template-driven-forms/template-driven-forms.component';
 import { FieldsetsComponent } from './fieldsets/fieldsets.component';
+import { DirectiveComponent } from './directive/directive.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'loginForm', component: LoginFormComponent },
   { path: 'templateDrivenForm', component: TemplateDrivenFormsComponent },
   { path: 'fieldsets', component: FieldsetsComponent },
+  { path: 'directives', component: DirectiveComponent },
 /*   { path: 'newTab', component: StudentDetailsComponent }, */
   { path: "**", component: PageNotFoundComponent }
 ];
@@ -37,6 +39,7 @@ export const routingComponents = [
                                     RegisterComponent,
                                     LoginFormComponent,
                                     TemplateDrivenFormsComponent,
-                                    FieldsetsComponent
+                                    FieldsetsComponent,
+                                    DirectiveComponent
                                  ];
 

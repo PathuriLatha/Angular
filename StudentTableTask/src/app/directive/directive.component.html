@@ -1,0 +1,87 @@
+<div class="container">
+  <h3 class="text-center text-info">Directives</h3>
+  <div appHighlight>This is a Attribute-directive</div>
+  <div>
+    <input type="radio" name="colors" (click)="color='lightgreen'">Green
+    <input type="radio" name="colors" (click)="color='yellow'">Yellow
+    <input type="radio" name="colors" (click)="color='cyan'">Cyan
+  </div>
+  
+  <div [appHighlight]="color">This is using @Input property</div>
+  <div>
+    <h5>Custom structural If Directive</h5>
+    <div>
+      <h6 *appNot="true">When the condition is true</h6>
+      <h6 *appNot="false">When the condition is false</h6>
+    </div>
+    <div>
+      <div *csIf="csIfShow">
+        <p>using custom if directive</p>
+      </div>
+      <ng-template [csIf]="!csIfShow">
+        <div>  
+          <p>using custom if directive Not Available</p>>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div>
+    <h5>Custom structural Loop Directive</h5>
+    <ul>
+      <li *csLoop="3" >
+          Structural Loop Directive
+      </li> 
+     </ul>
+  </div>
+  <div>
+    <h5>Custom structural setTimeout Directive</h5>
+    <div *csDelay="delayInSec">
+      <h6> After given time it's should be display </h6>	     
+   </div> 
+  </div>
+  <div>
+    <h4>Built-in Structural Directive</h4>
+    <div>
+      <h6>Using ngFor</h6>
+      <ul *ngFor="let fruit of fruits">
+        <li>{{fruit}}</li>
+      </ul>
+    </div>
+    <div>
+      <h6>Using ngSwitchCase</h6>
+      <ul [ngSwitch]="'ngSwitch'">
+        <li *ngSwitchCase="'ngSwitch'">This is matching with ngSwitch</li>
+        <li *ngSwitchCase="'notNgSwitch'">This is not matching with ngSwitch</li>
+      </ul>
+    </div>
+    <div>
+      <h6>Using ngIf</h6>
+      <ul *ngIf="true">
+        <li>ngIf with true</li>
+      </ul>
+      <ul *ngIf="false">
+        <li>ngIf with false</li>
+      </ul>
+    </div>
+    <div>
+      <h6>using both ngFor and ngIf</h6>
+      <div *ngFor="let fruit of fruits">
+        <ul *ngIf="fruit == 'Banana'">Banana is their in fruits</ul>
+      </div>
+    </div>
+    <div>
+      <h6>using ngFor, ngIf and ngSwitchCase</h6>
+      <div *ngFor="let fruit of fruits">
+        <div *ngIf="fruit == 'Apple'">
+          <ul [ngSwitch]="fruit">
+            <li *ngSwitchCase="'Banana'">Banana is Matching</li>
+            <li *ngSwitchCase="'Orange'">Orange is Matching</li>
+            <li *ngSwitchCase="'Apple'">Apple is Matching</li>
+            <li *ngSwitchCase="'Grapes'">Grapes is Matching</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

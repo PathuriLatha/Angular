@@ -1,3 +1,7 @@
+import { StructuralDelayDirective } from './structuralDelay.directive';
+import { StructuralLoopDirective } from './structuralLoop.directive';
+import { StructuralIfDirective } from './structuralIf.directive';
+import { AppNotDirective } from './app-not.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -8,12 +12,17 @@ import { StudentViewComponent } from './student-details/student-view/student-vie
 import { ReactiveFormsModule } from '@angular/forms';
 import { HighlightDirective } from './highlight.directive';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     StudentViewComponent,
-    HighlightDirective
+    HighlightDirective,
+    AppNotDirective,
+    StructuralIfDirective,
+    StructuralLoopDirective,
+    StructuralDelayDirective
   ],
   imports: [
     BrowserModule,
