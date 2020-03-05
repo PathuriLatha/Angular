@@ -11,7 +11,9 @@ import { AppComponent } from './app.component';
 import { StudentViewComponent } from './student-details/student-view/student-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HighlightDirective } from './highlight.directive';
-
+import { ParentComponent } from './Services/parent/parent.component';
+import { ChildComponent } from './Services/child/child.component';
+import { SiblingComponent } from './Services/sibling/sibling.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { HighlightDirective } from './highlight.directive';
     AppNotDirective,
     StructuralIfDirective,
     StructuralLoopDirective,
-    StructuralDelayDirective
+    StructuralDelayDirective,
+    ParentComponent,
+    ChildComponent,
+    SiblingComponent
   ],
   imports: [
     BrowserModule,

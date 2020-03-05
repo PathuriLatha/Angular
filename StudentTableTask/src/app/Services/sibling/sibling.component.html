@@ -1,0 +1,16 @@
+<div class="container">
+    <h3>Sibling Component</h3>
+    <div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Qualification</th>
+            </tr>
+            <tr *ngFor="let student of serviceDetails">
+                <td>{{student.name}}</td>
+                <td>{{student.qualification}}</td>
+            </tr>
+        </table>
+    </div>
+    <button (click)="displayDetails()">Display Details</button>
+</div>

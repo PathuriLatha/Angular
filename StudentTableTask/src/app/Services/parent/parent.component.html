@@ -1,0 +1,8 @@
+<div class="container alert alert-success">
+    <h3>Parent component</h3>
+    <h4>{{message}}</h4>
+    <!-- <app-child (messageEvent)="receiveMessage($event)"></app-child> -->
+    <h2>{{master}} controls {{heroes.length}} heroes</h2>
+   <app-child *ngFor="let hero of heroes" [hero]="hero" [master]="master"></app-child>
+    <app-sibling></app-sibling>
+</div>

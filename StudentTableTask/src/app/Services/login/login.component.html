@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Using Services</h2>
+    <div>
+        <form>
+            <label>Username</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="name">
+            <label>Qualification</label>
+            <input type="text" class="form-control" name="qualification" [(ngModel)]="qualification">
+            <button class="btn btn-info" (click)="add()">Add</button>
+            <br>
+            Name :: {{name}}
+            <br>
+            Qualification :: {{qualification}}
+        </form>
+    </div>
+</div>
+<app-parent></app-parent>
