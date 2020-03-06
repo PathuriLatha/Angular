@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HighlightDirective } from './highlight.directive';
 import { ParentComponent } from './Services/parent/parent.component';
 import { ChildComponent } from './Services/child/child.component';
+import { NewAccountComponent } from './service-task/new-account/new-account.component';
+import { AccountComponent } from './service-task/account/account.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { ChildComponent } from './Services/child/child.component';
     StructuralLoopDirective,
     StructuralDelayDirective,
     ParentComponent,
-    ChildComponent
+    ChildComponent,
+    NewAccountComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<div class="container account">
+    <h3 class="text-center text-info">Account Details</h3>
+    <div *ngFor="let account of accountDetails" class="account">
+        <p>Name :: {{account.name}}</p>
+        <p>Status :: {{account.status}}</p>
+        <div>
+            <button class="btn btn-success" (click)="setStatus('Active')" value="Active">Active</button>&nbsp;&nbsp;
+            <button class="btn btn-danger" (click)="setStatus('InActive')" value="InActiove">InActiove</button>&nbsp;&nbsp;
+            <button class="btn btn-warning" (click)="setStatus('UnKown')" value="UnKown">UnKown</button>
+        </div>
+        <br>
+    </div>
+</div>

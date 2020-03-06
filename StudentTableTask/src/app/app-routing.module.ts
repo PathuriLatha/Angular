@@ -1,3 +1,4 @@
+import { ServiceTaskComponent } from './service-task/service-task.component';
 import { SiblingComponent } from './Services/sibling/sibling.component';
 import { EmployeeListComponent } from './Services/employee-list/employee-list.component';
 import { NgModule, Component } from '@angular/core';
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'services', component: LoginComponent },
   { path: 'employeeList', component: EmployeeListComponent },
   { path: 'studentList', component: SiblingComponent },
+  { path: 'serviceTask', component: ServiceTaskComponent },
 /*   { path: 'newTab', component: StudentDetailsComponent }, */
   { path: "**", component: PageNotFoundComponent }
 ];
@@ -56,6 +58,7 @@ export const routingComponents = [
                                     DirectiveComponent,
                                     LoginComponent,
                                     EmployeeListComponent,
-                                    SiblingComponent
+                                    SiblingComponent,
+                                    ServiceTaskComponent
                                  ];
 
