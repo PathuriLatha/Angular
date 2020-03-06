@@ -1,16 +1,25 @@
 <div class="container">
     <h3>Sibling Component</h3>
+    <h5>{{empServiceMsg}}</h5>
+    <h5>{{detailsServiceMsg}}</h5>
+    <h5>DetailsService Number - {{detailsNumber}}</h5>
+    <h5>EmployeeService Number - {{empNumber}} </h5>
     <div>
         <table>
-            <tr>
+            <tr class="text-center">
+                <th colspan="2">Student List</th>
+            </tr>
+            <tr class="text-center">
                 <th>Name</th>
                 <th>Qualification</th>
             </tr>
-            <tr *ngFor="let student of serviceDetails">
+            <tr class="text-center" *ngFor="let student of serviceDetails">
                 <td>{{student.name}}</td>
                 <td>{{student.qualification}}</td>
             </tr>
         </table>
+        <br>
+        <button class="btn btn-info" [routerLink]="['/services']">Go to back</button>
     </div>
-    <button (click)="displayDetails()">Display Details</button>
+    
 </div>

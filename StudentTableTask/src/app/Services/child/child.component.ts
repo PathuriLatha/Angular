@@ -20,7 +20,7 @@ export class ChildComponent implements OnInit {
   }
 
   sendMessage() {
-    // this.obj.push()
+    // this.obj.push() 
     this.messageEvent.emit(this.message);
     console.log("sendMessage from child component event");
   }

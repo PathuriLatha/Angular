@@ -18,5 +18,13 @@ export class DetailsService{
           "qualification": "B.com"
         }        
     ];
+
+    message: string;
+    number: number = 1;
+
+    constructor(){
+      this.message = "service message from DetailsService";
+      this.number = this.number + 1;
+    }
     
 }

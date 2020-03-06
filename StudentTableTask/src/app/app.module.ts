@@ -13,7 +13,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HighlightDirective } from './highlight.directive';
 import { ParentComponent } from './Services/parent/parent.component';
 import { ChildComponent } from './Services/child/child.component';
-import { SiblingComponent } from './Services/sibling/sibling.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { SiblingComponent } from './Services/sibling/sibling.component';
     StructuralLoopDirective,
     StructuralDelayDirective,
     ParentComponent,
-    ChildComponent,
-    SiblingComponent
+    ChildComponent
   ],
   imports: [
     BrowserModule,

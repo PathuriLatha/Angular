@@ -1,4 +1,6 @@
-import { NgModule } from '@angular/core';
+import { SiblingComponent } from './Services/sibling/sibling.component';
+import { EmployeeListComponent } from './Services/employee-list/employee-list.component';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -22,7 +24,16 @@ const routes: Routes = [
   { path: 'templateDrivenForm', component: TemplateDrivenFormsComponent },
   { path: 'fieldsets', component: FieldsetsComponent },
   { path: 'directives', component: DirectiveComponent },
+  /*{ 
+    path: 'services', 
+    component: LoginComponent,
+    children: [
+      {path: 'studentList', component: SiblingComponent}
+    ]
+  },*/
   { path: 'services', component: LoginComponent },
+  { path: 'employeeList', component: EmployeeListComponent },
+  { path: 'studentList', component: SiblingComponent },
 /*   { path: 'newTab', component: StudentDetailsComponent }, */
   { path: "**", component: PageNotFoundComponent }
 ];
@@ -43,6 +54,8 @@ export const routingComponents = [
                                     TemplateDrivenFormsComponent,
                                     FieldsetsComponent,
                                     DirectiveComponent,
-                                    LoginComponent
+                                    LoginComponent,
+                                    EmployeeListComponent,
+                                    SiblingComponent
                                  ];
 
