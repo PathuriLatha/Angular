@@ -21,10 +21,16 @@ export class AccountService {
       "name": name, "status": status
     }
     this.accountArray.push(newAcc);
+    this.loggingService.statusChangeService(status);
   }
 
-  account(){
-    return this.accountArray;
+  // account(){
+  //   return this.accountArray;
+  // }
+
+  statusChange(id: number, status: string){
+    this.accountArray[status].status = status;
+    this.loggingService.statusChangeService(status);
   }
 
 }

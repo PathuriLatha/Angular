@@ -1,5 +1,5 @@
 import { AccountService } from './../account.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-account',
@@ -9,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class AccountComponent implements OnInit {
 
   accountDetails = [];
-
+  @Input() accounts: {name: string, status: string};
+  @Input() id: number;
+  
   constructor(private accountService: AccountService) {
     this.accountDetails = this.accountService.accountArray;
   }
@@ -18,8 +20,10 @@ export class AccountComponent implements OnInit {
   }
   
   setStatus(status: string){
-    this.accountService.statusUpdated.emit(status);
     console.log(status);
+    this.accountService.statusChange(this.id, status);
+    this.accountService.statusUpdated.emit(status);
+
   }
 
 }
