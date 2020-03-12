@@ -15,6 +15,7 @@ import { ParentComponent } from './Services/parent/parent.component';
 import { ChildComponent } from './Services/child/child.component';
 import { NewAccountComponent } from './service-task/new-account/new-account.component';
 import { AccountComponent } from './service-task/account/account.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AccountComponent } from './service-task/account/account.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

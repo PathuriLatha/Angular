@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class EmployeeListComponent implements OnInit {
   
   public employees = [];
+  public errorMessage: string = '';
   empServiceMessage: string ;
   detailsServiceMessage: string ;
   empNumber: number;
@@ -22,7 +23,12 @@ export class EmployeeListComponent implements OnInit {
 
   ngOnInit() {
     this.detailsService.message = "This message changed from employeeList component";
-    this.employees = this.employeeService.getEmployees;
+    // this.employees = this.employeeService.getEmployees;
+    this.employeeService.getEmployees().
+                        subscribe(
+                          data => { this.employees = data; },
+                          error => { this.errorMessage = error }
+                        );
     this.empServiceMessage = this.employeeService.service;
     this.detailsServiceMessage = this.detailsService.message; 
     this.empNumber = this.employeeService.number;
