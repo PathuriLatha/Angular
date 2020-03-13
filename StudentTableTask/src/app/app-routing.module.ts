@@ -13,6 +13,8 @@ import { TemplateDrivenFormsComponent } from './template-driven-forms/template-d
 import { FieldsetsComponent } from './fieldsets/fieldsets.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { LoginComponent } from './Services/login/login.component';
+import { InbuiltPipesComponent } from './inbuilt-pipes/inbuilt-pipes.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -37,6 +39,7 @@ const routes: Routes = [
   { path: 'studentList', component: SiblingComponent },
   { path: 'serviceTask', component: ServiceTaskComponent },
 /*   { path: 'newTab', component: StudentDetailsComponent }, */
+  { path: 'inbuiltPipes', component: InbuiltPipesComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 
@@ -59,6 +62,7 @@ export const routingComponents = [
                                     LoginComponent,
                                     EmployeeListComponent,
                                     SiblingComponent,
-                                    ServiceTaskComponent
+                                    ServiceTaskComponent,
+                                    InbuiltPipesComponent
                                  ];
 

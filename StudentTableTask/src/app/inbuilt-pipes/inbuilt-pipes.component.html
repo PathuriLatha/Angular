@@ -1,0 +1,61 @@
+<div class="container">
+    <h2 class="text-success">Built-in Pipes</h2>
+    <ul>
+        <li>City: {{city}}</li>
+        <li>Salary: {{salary}}</li>
+        <li>number: {{no}}</li>
+        <li>Current time: {{dt}}</li>
+        <li>Person: {{person}}</li>
+        <li>titleCase: {{titleCase | titlecase}}</li>
+    </ul>
+    <hr>
+    <h4 class="text-info">Pipes with uppercase and lowercase and slice</h4>
+    <ul>
+      <li>Uppercase: {{city | uppercase}}</li>
+      <li>Lowercase: {{city | lowercase}}</li>
+      <li>Lowercase with slice as one parameter(2) : {{city | slice: 2}}</li>
+      <li>Lowercase with slice as two parameter(2,5) : {{city | slice: 2:5}}</li>
+    </ul>
+    <hr>
+    <h4 class="text-info">Pipes with number and percent</h4>
+    <ul>
+      <li>salary in number: {{salary | number}}</li>
+      <li>salary in number .2: {{salary | number: ".2"}}</li>
+      <li>number (percent): {{no | percent}}</li>
+    </ul>
+    <hr>
+    <h4 class="text-info">Pipes with currency</h4>
+    <ul>
+      <li>currency: {{salary | currency: "USD"}}</li>
+      <li>INR: {{salary | currency: "INR"}}</li>
+      <li>GBP: {{salary | currency: "GBP"}}</li>
+      <li>EUR: {{salary | currency: "EUR"}}</li>
+    </ul>
+    <hr>
+    <h4 class="text-info">Pipes with json</h4>
+    <ul>
+      <li>json: {{person | json}}</li>
+    </ul>
+    <hr>
+    <h4 class="text-info">Pipes with date</h4>
+    <ul>
+      <li>Short date: {{dt | date: "shortDate"}}</li>
+      <li>Medium date: {{dt | date: "mediumDate"}}</li>
+      <li>Long date: {{dt | date: "longDate"}}</li>
+      <li>Full date: {{dt | date: "fullDate"}}</li>
+      <li>Short time: {{dt | date: "shortTime"}}</li>
+      <li>Long time: {{dt | date: "mediumTime"}}</li>
+      <li>Short: {{dt | date: "short"}}</li>
+      <li>Medium: {{dt | date: "medium"}}</li>
+      <li>d/M/y: {{dt | date: "d/M/y"}}</li>
+      <li>y-M-d: {{dt | date: "y-M-d"}}</li>
+      <li>h:m:s: {{dt | date: "h:m:s"}}</li>
+      <li>H:m: {{dt | date: "H:m"}}</li>
+      <li>a: {{dt | date: "a"}}</li>
+      <li>EEE: {{dt | date: "EEE"}}</li>
+      <li>EEEE: {{dt | date: "EEEE"}}</li>
+      <li>MMM: {{dt | date: "MMM"}}</li>
+      <li>MMMM: {{dt | date: "MMMM"}}</li>
+      <li>Z: {{dt | date: "Z"}}</li>
+    </ul>
+</div>

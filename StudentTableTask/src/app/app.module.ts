@@ -16,6 +16,9 @@ import { ChildComponent } from './Services/child/child.component';
 import { NewAccountComponent } from './service-task/new-account/new-account.component';
 import { AccountComponent } from './service-task/account/account.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomObservableComponent } from './Services/custom-observable/custom-observable.component';
+import { CObservableComponent } from './Services/c-observable/c-observable.component';
+import { CustomObservableWithServiceComponent } from './Services/custom-observable-with-service/custom-observable-with-service.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { HttpClientModule } from '@angular/common/http';
     ParentComponent,
     ChildComponent,
     NewAccountComponent,
-    AccountComponent
+    AccountComponent,
+    CustomObservableComponent,
+    CObservableComponent,
+    CustomObservableWithServiceComponent
   ],
   imports: [
     BrowserModule,
